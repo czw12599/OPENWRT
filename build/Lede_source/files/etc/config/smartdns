@@ -1,9 +1,9 @@
 
 config smartdns
-	option server_name 'smartdns'
+	option server_name 'cn'
 	option port '6053'
 	option tcp_server '1'
-	option cache_size '2048'
+	option cache_size '99999'
 	option rr_ttl_min '300'
 	option seconddns_tcp_server '1'
 	option coredump '0'
