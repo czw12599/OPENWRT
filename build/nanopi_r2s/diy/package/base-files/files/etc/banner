@@ -6,9 +6,9 @@
           |__| 
              
       OpenWrt AutoBuild by DaHuiLang
-           Lede_nanopi_r2s
+           LEDE-openwrt
  -----------------------------------------------------
        update----->openwrt
        tools------>tools
-       qinglong--->qinglong
+       qinglong------>qinglong
  -----------------------------------------------------
