@@ -1,9 +1,8 @@
 
 config smartdns
-	option server_name 'smartdns'
 	option port '6053'
 	option tcp_server '1'
-	option cache_size '2048'
+	option cache_size '99999'
 	option rr_ttl_min '300'
 	option seconddns_tcp_server '1'
 	option coredump '0'
@@ -22,8 +21,9 @@ config smartdns
 	option seconddns_no_rule_ipset '1'
 	option seconddns_no_rule_soa '1'
 	option dualstack_ip_selection '1'
-	option enabled '1'
 	option redirect 'dnsmasq-upstream'
+	option enabled '1'
+	option server_name 'cn'
 	list old_redirect 'dnsmasq-upstream'
 	list old_port '6053'
 	list old_enabled '1'
@@ -52,9 +52,25 @@ config server
 config server
 	option enabled '1'
 	option name '成都DNS'
-	option ip '202.98.96.68'
+	option ip '218.6.200.139'
 	option port '53'
 	option type 'udp'
+
+config server
+	option enabled '1'
+	option name '成都DNS'
+	option ip '61.139.2.69'
+	option port '53'
+	option type 'udp'
+
+config server
+	option enabled '1'
+	option name 'google'
+	option ip '8.8.8.8'
+	option port '853'
+	option server_group 'us'
+	option blacklist_ip '0'
+	option type 'tls'
 
 config server
 	option enabled '1'
@@ -89,14 +105,14 @@ config server
 config server
 	option enabled '1'
 	option name '成都DNS'
-	option ip '202.98.96.68'
+	option ip '218.6.200.139'
 	option port '53'
 	option type 'tcp'
 
 config server
 	option enabled '1'
-	option name 'google'
-	option ip '8.8.8.8'
-	option port '853'
-	option type 'tls'
+	option name '成都DNS'
+	option ip '61.139.2.69'
+	option port '53'
+	option type 'tcp'
 
