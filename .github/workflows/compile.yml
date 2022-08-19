@@ -16,7 +16,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede_source/start-up/start'
+      - '-config-'
 
 env:
   Github: https://github.com/${{github.repository}}
@@ -40,7 +40,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_source]
+        target: [Lienol_source]
         
         # [Lede_source,Lienol_source,Mortal_source,Tianling_source,openwrt_amlogic]
 
@@ -51,7 +51,7 @@ jobs:
     - name: 读取脚本设置
       run: |
         export matrixtarget="${{ matrix.target }}"
-        git clone --depth 1 -b main https://github.com/czw12599/common ${GITHUB_WORKSPACE}/build/common
+        git clone --depth 1 -b main https://github.com/281677160/common ${GITHUB_WORKSPACE}/build/common
         mv -f ${GITHUB_WORKSPACE}/build/common/*.sh ${GITHUB_WORKSPACE}/build/${{matrix.target}}/
         chmod -R +x ${GITHUB_WORKSPACE}/build
         source $GITHUB_WORKSPACE/build/${{matrix.target}}/common.sh && Diy_repo_url
@@ -130,6 +130,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         source $BUILD_PATH/common.sh && Package_amlogic
+
     - name: 整理固件文件夹(需配合diy-part.sh设定使用)
       continue-on-error: true
       id: organizer
