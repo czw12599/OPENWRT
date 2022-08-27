@@ -9,11 +9,9 @@ config smartdns
 	option coredump '0'
 	option seconddns_enabled '1'
 	option seconddns_port '5335'
-	option seconddns_server_group 'us'
 	option seconddns_no_speed_check '1'
 	option seconddns_no_dualstack_selection '1'
 	option seconddns_no_cache '1'
-	option force_aaaa_soa '1'
 	option ipv6_server '0'
 	option prefetch_domain '1'
 	option serve_expired '1'
@@ -24,6 +22,8 @@ config smartdns
 	option dualstack_ip_selection '1'
 	option enabled '1'
 	option redirect 'dnsmasq-upstream'
+	option force_aaaa_soa '0'
+	option seconddns_server_group 'passwall'
 	list old_redirect 'dnsmasq-upstream'
 	list old_port '6053'
 	list old_enabled '1'
@@ -68,9 +68,9 @@ config server
 	option name 'google'
 	option ip '8.8.8.8'
 	option port '853'
-	option server_group 'us'
 	option blacklist_ip '0'
 	option type 'tls'
+	option server_group 'passwall'
 
 config server
 	option enabled '1'
@@ -78,8 +78,8 @@ config server
 	option ip '8.8.4.4'
 	option port '853'
 	option type 'tls'
-	option server_group 'us'
 	option blacklist_ip '0'
+	option server_group 'passwall'
 
 config server
 	option enabled '1'
