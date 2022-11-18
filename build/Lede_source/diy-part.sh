@@ -10,7 +10,7 @@
 
 
 cat >$NETIP <<-EOF
-uci set network.lan.ipaddr='192.168.31.3'                      # IPv4 地址(openwrt后台地址)
+uci set network.lan.ipaddr='192.168.5.3'                      # IPv4 地址(openwrt后台地址)
 uci set network.lan.netmask='255.255.255.0'                   # IPv4 子网掩码
 uci set network.lan.delegate='0'                              # 去掉LAN口使用内置的 IPv6 管理(若用IPV6请注释或者删除这个)
 #uci set dhcp.@dnsmasq[0].filter_aaaa='1'                     # 禁止解析 IPv6 DNS记录(若用IPV6请注释或者删除这个)
