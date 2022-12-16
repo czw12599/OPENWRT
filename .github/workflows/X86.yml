@@ -104,7 +104,7 @@ env:
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   SOURCE_CODE: COOLSNOWWOLF
-  FOLDER_NAME: Lede
+  FOLDER_NAME: Lede_source
   TZ: Asia/Shanghai
 
 jobs:
