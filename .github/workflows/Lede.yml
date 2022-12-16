@@ -129,7 +129,7 @@ jobs:
     - name: 读取脚本设置
       run: |
         cd ${GITHUB_WORKSPACE}
-        git clone https://github.com/czw12599/common build/common
+        git clone https://github.com/shidahuilang/common build/common
         mv -f build/common/*.sh build/${{ env.FOLDER_NAME }}/
         chmod -R +x build
         export INPUTS_INFORMATION_NOTICE="${{ github.event.inputs.INFORMATION_NOTICE }}"
