@@ -173,12 +173,6 @@ jobs:
         cd openwrt
         source build/${{ env.FOLDER_NAME }}/common.sh && Diy_menu2
  
-    - name: 增加插件源
-      if: env.REPO_TOKEN
-      continue-on-error: true
-      run: |
-        cd openwrt
-        source ${BUILD_PATH}/common.sh && Diy_menu3
  
     - name: 加载diy-part.sh文件
       if: env.REPO_TOKEN
