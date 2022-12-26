@@ -119,7 +119,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede]
+        target: [Lede_source]
         
         # 请勿对 target: [Lede] 做任何修改
         
