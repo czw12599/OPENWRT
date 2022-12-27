@@ -1,6 +1,0 @@
-
-config macclient '3b31d5bc23c043289eb550f54e7bb8ce'
-	option name 'emby'
-	option macaddr '70:85:C2:73:66:77'
-	option maceth 'br-lan'
-
