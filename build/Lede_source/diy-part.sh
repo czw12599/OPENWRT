@@ -14,7 +14,7 @@ export Lan_DNS="114.114.114.114 223.5.5.5"  # 旁路由设置 DNS(多个DNS要�
 export IPv4_Broadcast="192.168.5.255"       # 设置 IPv4 广播(填0为关闭)
 export Close_DHCP="0"                       # 旁路由关闭DHCP功能(1为开,0为关闭)
 export Delete_Bridge="0"                    # 旁路由去掉桥接模式(1为开,0为关闭)
-export ttyd_Nopassword="1"                  # 设置ttyd免密登录(1为开,0为关闭)
+export ttyd_Nopassword="0"                  # 设置ttyd免密登录(1为开,0为关闭)
 
 export OpenClash_branch="0"            # OpenClash代码选择分支（master 或 dev）(填0为不需要此插件)
 export OpenClash_Core="0"                   # 编译固件增加OpenClash时,把核心下载好,核心为3MB左右大小(1为开,0为关闭)
