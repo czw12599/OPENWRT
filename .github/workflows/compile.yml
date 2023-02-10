@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede_source/relevance/start'
+      - 'build/Lede/relevance/start'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -45,7 +45,7 @@ jobs:
     - name: 读取脚本
       run: |
         cd ${GITHUB_WORKSPACE}
-        git clone https://github.com/shidahuilang/common build/common
+        git clone https://github.com/czw12599/common build/common
         mv -f build/common/*.sh build/${{matrix.target}}/
         sudo chmod -R +x build
         if [[ -n "${{ github.event.workflow }}" ]]; then
@@ -54,7 +54,6 @@ jobs:
         else
           source build/${{matrix.target}}/common.sh && Diy_menu1
         fi
-
     - name: CPU检测
       run: |
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -62,7 +61,7 @@ jobs:
         if [[ -n "${{ github.event.workflow }}" ]]; then
           export CPU_SELECTIOY="$(source "${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/settings.ini" && echo "${CPU_SELECTION}")"
         else
-          export CPU_PASSWORD="1675327401"
+          export CPU_PASSWORD="1674895017"
           export CPU_OPTIMIZATION="E5"
         fi
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
@@ -75,7 +74,6 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /${{ env.DIY_WORK }}
         sudo chown ${USER}:${GROUPS} /${{ env.DIY_WORK }}
-
     - name: 下载"${{matrix.target}}"源码
       working-directory: /${{ env.DIY_WORK }}
       run: |
@@ -105,7 +103,6 @@ jobs:
       run: |
         cd openwrt
         source ${BUILD_PATH}/common.sh && Diy_menu4
-
     - name: 生成"${{matrix.target}}"配置文件
       run: |
         cd openwrt
@@ -263,4 +260,4 @@ jobs:
           elif [[ "${{steps.compile.outcome}}" == 'success' ]] && [[ "${{steps.regular.outcome}}" == 'failure' ]]; then 
             curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="[${{ env.SOURCE }}-${{ env.TARGET_PROFILE }}]编译成功,发布失败" --data "message=我亲爱的✨主人❌：您使用【${{matrix.target}}】文件夹编译的[${{ env.SOURCE }}-${{ env.TARGET_PROFILE }}]固件(${{env.WAREHOUSE_MAN}}仓库的#${{env.RUN_NUMBER}}号)顺利编译成功✌️,💥但是发布云端在线更新使用的固件失败了💥！(${{env.Tongzhi_Date}})" "http://${{ secrets.CURL }}/push?token=${{ secrets.WX_TOKEN }}&"
           fi
-        fi     
+        fi   
