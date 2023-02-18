@@ -4,7 +4,7 @@
 #
 #
 
-name: Lede-大雕
+name: R2S
 on:
   workflow_dispatch:
     inputs:
