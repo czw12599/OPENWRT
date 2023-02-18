@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede_source/relevance/start'
+      - 'build/nanopi_r2s/relevance/start'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
