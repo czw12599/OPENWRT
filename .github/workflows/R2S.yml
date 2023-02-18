@@ -1,23 +1,23 @@
-
+#
 #
 # REPO_TOKEN密匙制作教程：https://git.io/jm.md
 #
 #
 
-name: r2s
+name: Lede-大雕
 on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
         description: '大雕源码'
-        required: false
+        required: true
         default: 'master'
         type: choice
         options:
           - 'master'
       CONFIG_FILE:
-        description: '配置文件'
-        required: false
+        description: '请选择配置文件'
+        required: true
         default: 'r2s'
         type: choice
         options:
@@ -40,7 +40,7 @@ on:
           - 'p2w_r619ac-128m'
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
-        required: false
+        required: true
         default: '弃用E5系列'
         type: choice
         options:
@@ -50,13 +50,14 @@ on:
           - '选择8171M'
       INFORMATION_NOTICE:
         description: 'Telegram或pushplus信息通知'
-        required: false
+        required: true
         default: '关闭'
         type: choice
         options:
           - 'Telegram'
           - 'Telegram'
           - 'pushplus'
+          - 'Wechat'
       SSH_ACTION:
         description: 'SSH远程配置固件'
         required: false
@@ -90,8 +91,8 @@ on:
 
 
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
-#  schedule:
-#   - cron: 35 18 * * *
+ # schedule:
+  # - cron: 35 4 * * *
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -103,15 +104,24 @@ env:
   PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-  SOURCE_CODE: COOLSNOWWOLF
-  FOLDER_NAME: Lede
+  WX_TOKEN: ${{ secrets.WX_TOKEN }}
+  CURL: ${{ secrets.CURL }}
   TZ: Asia/Shanghai
 
 jobs:
   build:
-    name: 启动"${{ github.event.inputs.REPO_BRANCH }}"触发编译
+    name: 启动"${{ matrix.target }}-${{ github.event.inputs.REPO_BRANCH }}"触发编译
     runs-on: ubuntu-20.04
     if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
+    
+    env:
+      FOLDER_NAME: ${{ matrix.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [nanopi_r2s]
+        
+        # 请勿对 target: [Lede] 做任何修改
         
     steps:
     - name: 密匙检测（密匙为空则退出）
@@ -124,7 +134,7 @@ jobs:
         fi
     
     - name: 准备结束
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3  
 
     - name: 读取脚本设置
       run: |
@@ -146,6 +156,7 @@ jobs:
         source build/${{ env.FOLDER_NAME }}/common.sh && settings_variable
         source build/${{ env.FOLDER_NAME }}/common.sh && Diy_menu1
         echo "${{ github.event.schedule }}"
+        
     - name: 部署编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -158,7 +169,7 @@ jobs:
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
     
-    - name: 下载"${{ env.FOLDER_NAME }}-${{ github.event.inputs.REPO_BRANCH }}"源码
+    - name: 下载"${{ matrix.target }}-${{ github.event.inputs.REPO_BRANCH }}"源码
       working-directory: /${{ env.DIY_WORK }}
       run: |
         git clone -b "${REPO_BRANCH}" --single-branch "${REPO_URL}" openwrt
@@ -171,7 +182,7 @@ jobs:
         cd ${GITHUB_WORKSPACE}
         cp -Rf `find ./ -maxdepth 1 -type d ! -path './openwrt' ! -path './'` openwrt
         cd openwrt
-        source build/${{ env.FOLDER_NAME }}/common.sh && Diy_menu2
+        source ${BUILD_PATH}/common.sh && Diy_menu2
  
     - name: 增加插件源
       if: env.REPO_TOKEN
@@ -186,7 +197,7 @@ jobs:
       run: |
         cd openwrt
         source $BUILD_PATH/$DIY_PART_SH
-        source build/${{ env.FOLDER_NAME }}/common.sh && Diy_Publicarea
+        source ${BUILD_PATH}/common.sh && Diy_Publicarea
         
     - name: 加载源、补丁和files文件夹
       if: env.REPO_TOKEN
@@ -197,12 +208,12 @@ jobs:
     
     - name: SSH远程连接（制作.config配置文件）
       if: github.event.inputs.SSH_ACTION == 'true'
-      uses: danshui-git/debugger-action@main
+      uses: makebl/debugger-action@main
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-    - name: 生成"${{ env.FOLDER_NAME }}"配置文件
+    - name: 生成"${{ matrix.target }}"配置文件
       if: env.REPO_TOKEN
       id: compile
       run: |
@@ -229,10 +240,10 @@ jobs:
       if: env.REPO_TOKEN
       uses: Mattraks/delete-workflow-runs@v2
       with:
-          token: ${{ secrets.REPO_TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: ${{ env.RETAIN_DAYS }}
-          keep_minimum_runs: 1
+        token: ${{ secrets.REPO_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_days: ${{ env.RETAIN_DAYS }}
+        keep_minimum_runs: 1
     
     - name: 删除releases
       continue-on-error: true
@@ -245,7 +256,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
         
-    - name: 触发compile.yml启动"${{ env.FOLDER_NAME }}"编译
+    - name: 触发compile.yml启动"${{ matrix.target }}"编译
       id: gitpush
       if: steps.compile.outcome == 'success' && env.REPO_TOKEN
       run: |
@@ -254,7 +265,7 @@ jobs:
         
     - name: 电报机器人或pushplus信息通知
       continue-on-error: true
-      if: env.PUSH_PLUS_TOKEN && env.INFORMATION_NOTICE == 'PUSH' || env.TELEGRAM_BOT_TOKEN && env.INFORMATION_NOTICE == 'TG'
+      if: env.PUSH_PLUS_TOKEN && env.INFORMATION_NOTICE == 'PUSH' || env.TELEGRAM_BOT_TOKEN && env.INFORMATION_NOTICE == 'TG' || env.WX_TOKEN && env.INFORMATION_NOTICE == 'WX'
       run: |
         if [[ "${{ env.INFORMATION_NOTICE }}" == "TG" ]]; then
           if [[ "${{steps.gitpush.outcome}}" == 'success' ]] && [[ "${{steps.compile.outcome}}" == 'success' ]]; then
@@ -269,6 +280,14 @@ jobs:
             curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="开始编译【${{ env.FOLDER_NAME }}】" --data "content=🎉 主人💕：您的编译脚本成功触发【${{ env.FOLDER_NAME }}】文件夹编译【${{env.TARGET_PROFILE}}】固件中,请耐心等待...... 😋(${{env.Tongzhi_Date}})" "http://www.pushplus.plus/send"
           else
             curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="触发启动失败" --data "content=💥主人❌ ：上游扩展错误或者脚本错误,触发启动【${{ env.FOLDER_NAME }}】失败,请点击触发脚本步骤查看详情!(${{env.Tongzhi_Date}})" "http://www.pushplus.plus/send"
+            exit 1
+          fi
+        fi
+        if [[ "${{ env.INFORMATION_NOTICE }}" == "WX" ]]; then
+          if [[ "${{steps.gitpush.outcome}}" == 'success' ]] && [[ "${{steps.compile.outcome}}" == 'success' ]]; then
+            curl -k --data token="${{ secrets.WX_TOKEN }}" --data title="开始编译【${{ env.FOLDER_NAME }}】" --data "message=🎉 主人💕：您的编译脚本成功触发【${{ env.FOLDER_NAME }}】文件夹编译【${{env.TARGET_PROFILE}}】固件中,请耐心等待...... 😋(${{env.Tongzhi_Date}})" "http://${{ secrets.CURL }}/push?token=${{ secrets.WX_TOKEN }}&"
+          else
+            curl -k --data token="${{ secrets.WX_TOKEN }}" --data title="触发启动失败" --data "message=💥主人❌ ：上游扩展错误或者脚本错误,触发启动【${{ env.FOLDER_NAME }}】失败,请点击触发脚本步骤查看详情!(${{env.Tongzhi_Date}})" "http://${{ secrets.CURL }}/push?token=${{ secrets.WX_TOKEN }}&"
             exit 1
           fi
         fi
