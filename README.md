@@ -43,7 +43,7 @@ cd openwrt && make menuconfig
 #
 - > 2、拉取我的仓库到你的github帐号《[拉取仓库教程](https://github.com/czw12599/shuoming/blob/master/1%E6%8B%89%E5%8F%96%E4%BB%93%E5%BA%93.md)》
 #
-- > 3、必须了解的脚本简单介绍，起码也知道我仓库有什么源码，出处那里，然后您才好选择《[脚本简单介绍](https://github.com/czw12599/shuoming)/blob/master/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E6%96%B0%E8%84%9A%E6%9C%AC.md)》
+- > 3、必须了解的脚本简单介绍，起码也知道我仓库有什么源码，出处那里，然后您才好选择《[脚本简单介绍](https://github.com/czw12599/shuoming/blob/master/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E6%96%B0%E8%84%9A%E6%9C%AC.md)》
 #
 - > 4、必须获取密匙然后在你拉取我的仓库里使用，要不然我的仓库您使用不了《[仓库密匙获取跟使用](https://github.com/czw12599/shuoming)/blob/master/jm.md)》
 #
