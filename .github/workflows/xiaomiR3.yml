@@ -3,8 +3,9 @@
 # REPO_TOKEN密匙制作教程：https://git.io/jm.md
 #
 #
+
 name: 小米R3G
-on: 
+on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
