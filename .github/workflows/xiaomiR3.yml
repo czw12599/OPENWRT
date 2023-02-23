@@ -18,7 +18,7 @@ on:
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
-        default: 'xiaomi_mi-router-3g'
+        default: 'xiaomi_R3G'
         type: choice
         options:
           - 'asus_rt-acrh17'
