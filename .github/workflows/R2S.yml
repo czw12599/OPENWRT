@@ -256,7 +256,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
         
-    - name: 触发compile.yml启动"${{ matrix.target }}"编译
+    - name: 触发compile.yml启动"${{ env.FOLDER_NAME }}"编译
       id: gitpush
       if: steps.compile.outcome == 'success' && env.REPO_TOKEN
       run: |
