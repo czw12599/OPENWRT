@@ -17,7 +17,7 @@ on:
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
-        default: 'x86_64'
+        default: 'xiaomi_mi-router-3g'
         type: choice
         options:
           - 'asus_rt-acrh17'
@@ -118,7 +118,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [xiaomi_r3g]
+        target: [Lede_source]
         
         # 请勿对 target: [Lede] 做任何修改
         
