@@ -61,9 +61,9 @@ cd openwrt && make menuconfig
 - > 11、下次编译，在不改变.config配置文件的情况下，就不需要再次获取了，直接启动编译就可以了，不改变配置的话，手机都可以启动编译
 #
 - > 12、
-- 《[仓库密匙获取跟使用](https://github.com/danshui-git/shuoming/blob/master/jm.md)》
-- 《[Telegram和pushplus的密匙获取方式](https://github.com/danshui-git/shuoming/blob/master/bot.md)》
-- 《[增加编译机型文件夹的方法](https://github.com/danshui-git/shuoming/blob/master/jlck.md)》
+- 《[仓库密匙获取跟使用](https://github.com/czw12599-git/shuoming/blob/master/jm.md)》
+- 《[Telegram和pushplus的密匙获取方式](https://github.com/czw12599-git/shuoming/blob/master/bot.md)》
+- 《[增加编译机型文件夹的方法](https://github.com/czw12599-git/shuoming/blob/master/jlck.md)》
 - 《[定时触发开启编译说明](https://github.com/danshui-git/shuoming/blob/master/%E5%AE%9A%E6%97%B6%E7%BC%96%E8%AF%91%E8%AF%B4%E6%98%8E.md)》
 - 《[一键保存配置同步上游仓库说明](https://github.com/danshui-git/shuoming/blob/master/chongxinfork.md)》
 - 《[X86编译时选固件格式和设置overlay空间容量](https://github.com/danshui-git/shuoming/blob/master/overlay.md)》
@@ -101,7 +101,7 @@ cd openwrt && make menuconfig
 - 如果你觉得此项目对你有帮助，请请我喝一杯82年的凉白开，感谢！
 
 -微信-
-# <img src="https://github.com/danshui-git/shuoming/blob/master/doc/weixin4.png" />
+# <img src="https://github.com/czw12599-git/shuoming/blob/master/doc/weixin4.png" />
 
 
 
