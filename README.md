@@ -26,7 +26,7 @@ cd openwrt && make menuconfig
 
 - 编译amlogic系列，《[自动打包您所需的固件说明]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/Amlogic.md)》
 
-- 源码已直接加入【[常用插件列表]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/%E5%90%8D%E7%A7%B0.md)】
+- 源码已直接加入【[常用插件列表]((https://github.com/czw12599/shuoming)/blob/master/%E5%90%8D%E7%A7%B0.md)】
 
 - 《[如何在本地Ubuntu一键无脑编译](https://github.com/281677160/bendi)》
  
