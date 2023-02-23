@@ -24,30 +24,30 @@ cd openwrt && make menuconfig
 
 - # 介绍
 
-- 编译amlogic系列，《[自动打包您所需的固件说明](https://github.com/czw12599-git/shuoming/blob/master/Amlogic.md)》
+- 编译amlogic系列，《[自动打包您所需的固件说明]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/Amlogic.md)》
 
-- 源码已直接加入【[常用插件列表](https://github.com/czw12599-git/shuoming/blob/master/%E5%90%8D%E7%A7%B0.md)】
+- 源码已直接加入【[常用插件列表]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/%E5%90%8D%E7%A7%B0.md)】
 
 - 《[如何在本地Ubuntu一键无脑编译](https://github.com/281677160/bendi)》
  
-- 《[把定时自动在线更新插件编译进固件的说明](https://github.com/czw12599-git/shuoming/blob/master/%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6.md)》
+- 《[把定时自动在线更新插件编译进固件的说明]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6.md)》
 
 ---
 #
 - # 编译教程：
 - ### 以下的说明教程都是在我另外的仓库的，查看说明时候就跳转到另外仓库了，浏览器回退就会回来，别拉取到我说明的仓库，注意了！
 #
-- 编译openwrt两个常用的工具下载地址《[PuTTY(SSH)工具](https://github.com/czw12599-git/shuoming/blob/master/Putty%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD.md)》《[WinSCP文件管理](https://github.com/danshui-git/shuoming/blob/master/WinSCP.md)》
+- 编译openwrt两个常用的工具下载地址《[PuTTY(SSH)工具]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/Putty%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD.md)》《[WinSCP文件管理](https://github.com/danshui-git/shuoming/blob/master/WinSCP.md)》
 #
 - > 1、注册及登录github账号，github个别地区或网络已筑墙,请自备梯子《[注册链接](https://github.com)》
 #
-- > 2、拉取我的仓库到你的github帐号《[拉取仓库教程](https://github.com/czw12599/shuoming/blob/master/1%E6%8B%89%E5%8F%96%E4%BB%93%E5%BA%93.md)》
+- > 2、拉取我的仓库到你的github帐号《[拉取仓库教程]([https://github.com/czw12599/shuoming](https://github.com/czw12599/shuoming)/blob/master/1%E6%8B%89%E5%8F%96%E4%BB%93%E5%BA%93.md)》
 #
-- > 3、必须了解的脚本简单介绍，起码也知道我仓库有什么源码，出处那里，然后您才好选择《[脚本简单介绍](https://github.com/czw12599-git/shuoming/blob/master/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E6%96%B0%E8%84%9A%E6%9C%AC.md)》
+- > 3、必须了解的脚本简单介绍，起码也知道我仓库有什么源码，出处那里，然后您才好选择《[脚本简单介绍]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E6%96%B0%E8%84%9A%E6%9C%AC.md)》
 #
-- > 4、必须获取密匙然后在你拉取我的仓库里使用，要不然我的仓库您使用不了《[仓库密匙获取跟使用](https://github.com/czw12599-git/shuoming/blob/master/jm.md)》
+- > 4、必须获取密匙然后在你拉取我的仓库里使用，要不然我的仓库您使用不了《[仓库密匙获取跟使用]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/jm.md)》
 #
-- > 6、修改后台登录IP，在build文件夹-->对应您在第 5 步修改的源码文件夹里点开[diy-part.sh]，然后修改后台登录IP《[修改ip教程](https://github.com/czw12599-git/shuoming/blob/master/ip.md)》
+- > 6、修改后台登录IP，在build文件夹-->对应您在第 5 步修改的源码文件夹里点开[diy-part.sh]，然后修改后台登录IP《[修改ip教程]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/ip.md)》
 #
 - > 7、开启或者关闭某功能，在build文件夹-->对应您在第 5 步修改的源码文件夹里点开[settings.ini]，然后按需控制各项目开关《[各开关控制教程](https://github.com/czw12599-git/shuoming/blob/master/kaiguan.md)》
 #
