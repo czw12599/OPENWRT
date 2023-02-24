@@ -119,7 +119,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_source]
+        target: [nanopi_r2s]
         
         # 请勿对 target: [Lede] 做任何修改
         
