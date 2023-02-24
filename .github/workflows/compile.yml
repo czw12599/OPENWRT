@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/phicomm_k3/relevance/start'
+      - 'build/Official/relevance/start'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [phicomm_k3]
+        target: [Official]
 
     steps:    
     - name: 准备结束
@@ -52,7 +52,6 @@ jobs:
         else
           source build/${{matrix.target}}/common.sh && Diy_menu1
         fi
-
     - name: CPU检测
       run: |
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -60,7 +59,7 @@ jobs:
         if [[ -n "${{ github.event.workflow }}" ]]; then
           export CPU_SELECTIOY="$(source "${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/settings.ini" && echo "${CPU_SELECTION}")"
         else
-          export CPU_PASSWORD="1677229073"
+          export CPU_PASSWORD="1677203704"
           export CPU_OPTIMIZATION="E5"
         fi
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
@@ -73,7 +72,6 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /${{ env.DIY_WORK }}
         sudo chown ${USER}:${GROUPS} /${{ env.DIY_WORK }}
-
     - name: 下载"${{matrix.target}}"源码
       working-directory: /${{ env.DIY_WORK }}
       run: |
@@ -103,7 +101,6 @@ jobs:
       run: |
         cd openwrt
         source ${BUILD_PATH}/common.sh && Diy_menu4
-
     - name: 生成"${{matrix.target}}"配置文件
       run: |
         cd openwrt
@@ -143,7 +140,6 @@ jobs:
       if: steps.compile.outcome == 'success' && env.PACKAGING_FIRMWARE == 'true'
       run: |
         source ${BUILD_PATH}/common.sh && Package_amlogic
-
     - name: 整理固件文件夹(需配合diy-part.sh设定使用)
       continue-on-error: true
       if: steps.compile.outcome == 'success'
