@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/xiaomi_r3g/relevance/start'
+      - 'build/phicomm_k3/relevance/start'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [xiaomi_r3g]
+        target: [phicomm_k3]
 
     steps:    
     - name: 准备结束
