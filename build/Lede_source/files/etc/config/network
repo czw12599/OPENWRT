@@ -29,7 +29,5 @@ config interface 'wan'
 	option ipv6 'auto'
 	option keepalive '0'
 
-config device
-	option type 'bridge'
-	option name 'docker0'
+
 
