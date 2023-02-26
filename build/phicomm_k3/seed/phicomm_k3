@@ -16,6 +16,7 @@ CONFIG_PACKAGE_6rd=y
 CONFIG_PACKAGE_6to4=y
 CONFIG_PACKAGE_SAMBA_MAX_DEBUG_LEVEL=-1
 CONFIG_PACKAGE_alist=y
+CONFIG_PACKAGE_blkid=y
 CONFIG_PACKAGE_boost-date_time=y
 CONFIG_PACKAGE_btrfs-progs=y
 CONFIG_PACKAGE_cgroupfs-mount=y
@@ -23,7 +24,9 @@ CONFIG_PACKAGE_cgroupfs-mount=y
 CONFIG_PACKAGE_containerd=y
 CONFIG_PACKAGE_docker=y
 CONFIG_PACKAGE_dockerd=y
+CONFIG_PACKAGE_e2fsprogs=y
 CONFIG_PACKAGE_etherwake=y
+CONFIG_PACKAGE_filebrowser=y
 CONFIG_PACKAGE_ip6tables=y
 CONFIG_PACKAGE_iptables-mod-ipopt=y
 CONFIG_PACKAGE_ipv6helper=y
@@ -60,17 +63,24 @@ CONFIG_PACKAGE_kmod-veth=y
 CONFIG_PACKAGE_libaio=y
 CONFIG_PACKAGE_libattr=y
 CONFIG_PACKAGE_libblkid=y
+CONFIG_PACKAGE_libcomerr=y
 CONFIG_PACKAGE_libdevmapper=y
+CONFIG_PACKAGE_libext2fs=y
 CONFIG_PACKAGE_liblzo=y
 CONFIG_PACKAGE_libmount=y
 CONFIG_PACKAGE_libnetwork=y
+CONFIG_PACKAGE_libparted=y
 CONFIG_PACKAGE_libpopt=y
 CONFIG_PACKAGE_libseccomp=y
 CONFIG_PACKAGE_libsmartcols=y
+CONFIG_PACKAGE_libss=y
 CONFIG_PACKAGE_libuv=y
 CONFIG_PACKAGE_libwebsockets-full=y
 CONFIG_PACKAGE_luci-app-alist=y
+CONFIG_PACKAGE_luci-app-diskman=y
 CONFIG_PACKAGE_luci-app-dockerman=y
+CONFIG_PACKAGE_luci-app-filebrowser=y
+# CONFIG_PACKAGE_luci-app-filetransfer is not set
 CONFIG_PACKAGE_luci-app-mwan3=y
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng is not set
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui is not set
@@ -90,6 +100,7 @@ CONFIG_PACKAGE_luci-app-watchcat=y
 # CONFIG_PACKAGE_luci-app-webd_INCLUDE_WEBD_BINARY is not set
 CONFIG_PACKAGE_luci-app-wolplus=y
 CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-mwan3-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-samba-zh-cn=y
@@ -99,19 +110,21 @@ CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-watchcat-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-wolplus-zh-cn=y
 CONFIG_PACKAGE_luci-lib-docker=y
+# CONFIG_PACKAGE_luci-lib-fs is not set
 CONFIG_PACKAGE_luci-proto-ipv6=y
-CONFIG_PACKAGE_luci-theme-ifit=y
-CONFIG_PACKAGE_luci-theme-neobird2=y
+CONFIG_PACKAGE_luci-theme-netgear=y
 CONFIG_PACKAGE_mount-utils=y
 CONFIG_PACKAGE_mwan3=y
 CONFIG_PACKAGE_odhcp6c=y
 CONFIG_PACKAGE_odhcp6c_ext_cer_id=0
 CONFIG_PACKAGE_odhcpd-ipv6only=y
 CONFIG_PACKAGE_odhcpd_ipv6only_ext_cer_id=0
+CONFIG_PACKAGE_parted=y
 # CONFIG_PACKAGE_pdnsd-alt is not set
 CONFIG_PACKAGE_runc=y
 CONFIG_PACKAGE_samba36-server=y
 CONFIG_PACKAGE_smartdns=y
+CONFIG_PACKAGE_smartmontools=y
 CONFIG_PACKAGE_socat=y
 CONFIG_PACKAGE_tini=y
 CONFIG_PACKAGE_trojan=y
@@ -119,3 +132,4 @@ CONFIG_PACKAGE_ttyd=y
 # CONFIG_PACKAGE_vlmcsd is not set
 # CONFIG_PACKAGE_vsftpd-alt is not set
 CONFIG_PACKAGE_watchcat=y
+CONFIG_PARTED_READLINE=y
