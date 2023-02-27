@@ -1,0 +1,111 @@
+
+config network
+	option init 'network'
+	list affects 'dhcp'
+	list affects 'radvd'
+
+config wireless
+	list affects 'network'
+
+config firewall
+	option init 'firewall'
+	list affects 'luci-splash'
+	list affects 'qos'
+	list affects 'miniupnpd'
+
+config olsr
+	option init 'olsrd'
+
+config dhcp
+	option init 'dnsmasq'
+	list affects 'odhcpd'
+
+config odhcpd
+	option init 'odhcpd'
+
+config dropbear
+	option init 'dropbear'
+
+config httpd
+	option init 'httpd'
+
+config fstab
+	option exec '/sbin/block mount'
+
+config qos
+	option init 'qos'
+
+config system
+	option init 'led'
+	list affects 'luci_statistics'
+	list affects 'dhcp'
+
+config cron
+	option init 'cron'
+
+config luci_splash
+	option init 'luci_splash'
+
+config ntpclient
+	option init 'ntpclient'
+
+config samba
+	option init 'samba'
+
+config tinyproxy
+	option init 'tinyproxy'
+
+config AdGuardHome
+	option init 'AdGuardHome'
+
+config upnpd
+	option init 'miniupnpd'
+
+config smartdns
+	option init 'smartdns'
+
+config mwan3
+	option exec '/etc/init.d/mwan3 reload'
+
+config autoupdate
+	option init 'autoupdate'
+
+config wolplus
+	option init 'wolplus'
+
+config socat
+	option init 'luci_socat'
+
+config arpbind
+	option init 'arpbind'
+
+config filebrowser
+	option init 'filebrowser'
+
+config mia
+	option init 'mia'
+
+config openclash
+	option init 'openclash'
+
+config passwall
+	option init 'passwall'
+
+config passwall_server
+	option init 'passwall_server'
+
+config serverchan
+	option init 'serverchan'
+
+config shadowsocksr
+	option init 'shadowsocksr'
+
+config syncdial
+	option exec '/bin/genwancfg'
+
+config turboacc
+	option init 'turboacc'
+
+config unblockmusic
+	option init 'unblockmusic'
+
