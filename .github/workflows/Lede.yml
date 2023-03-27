@@ -32,7 +32,7 @@ on:
         options:
           - 'asus_rt-acrh17'
           - 'd-team_newifi-d2'
-          - 'p2w_r619ac-128m'
+          - 'xiaomi_R3G'
           - 'r2s'
           - 'x86_64'
           - 'xiaomi_mi-router-4a-gigabit'
