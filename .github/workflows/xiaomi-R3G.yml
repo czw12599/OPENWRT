@@ -117,7 +117,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_source]
+        target: [xiaomi_r3g]
         
         # 请勿对 target: [Lede] 做任何修改
         
