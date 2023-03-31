@@ -16,18 +16,25 @@ CONFIG_PACKAGE_6rd=y
 CONFIG_PACKAGE_6to4=y
 CONFIG_PACKAGE_SAMBA_MAX_DEBUG_LEVEL=-1
 CONFIG_PACKAGE_alist=y
+CONFIG_PACKAGE_bash=y
 CONFIG_PACKAGE_blkid=y
+CONFIG_PACKAGE_boost=y
 CONFIG_PACKAGE_boost-date_time=y
+CONFIG_PACKAGE_boost-program_options=y
+CONFIG_PACKAGE_boost-system=y
 CONFIG_PACKAGE_btrfs-progs=y
 CONFIG_PACKAGE_cgroupfs-mount=y
 # CONFIG_PACKAGE_chinadns-ng is not set
 CONFIG_PACKAGE_containerd=y
+CONFIG_PACKAGE_coreutils-nohup=y
 CONFIG_PACKAGE_docker=y
 CONFIG_PACKAGE_dockerd=y
 CONFIG_PACKAGE_e2fsprogs=y
 CONFIG_PACKAGE_etherwake=y
 CONFIG_PACKAGE_filebrowser=y
 CONFIG_PACKAGE_ip6tables=y
+CONFIG_PACKAGE_ipt2socks=y
+CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
 CONFIG_PACKAGE_iptables-mod-ipopt=y
 CONFIG_PACKAGE_ipv6helper=y
 CONFIG_PACKAGE_kmod-br-netfilter=y
@@ -39,6 +46,7 @@ CONFIG_PACKAGE_kmod-dummy=y
 CONFIG_PACKAGE_kmod-fs-btrfs=y
 CONFIG_PACKAGE_kmod-ikconfig=y
 CONFIG_PACKAGE_kmod-ip6tables=y
+CONFIG_PACKAGE_kmod-ipt-conntrack-extra=y
 CONFIG_PACKAGE_kmod-ipt-ipopt=y
 CONFIG_PACKAGE_kmod-ipt-nat6=y
 CONFIG_PACKAGE_kmod-iptunnel=y
@@ -63,25 +71,32 @@ CONFIG_PACKAGE_kmod-veth=y
 CONFIG_PACKAGE_libaio=y
 CONFIG_PACKAGE_libattr=y
 CONFIG_PACKAGE_libblkid=y
+CONFIG_PACKAGE_libcap-bin=y
+CONFIG_PACKAGE_libcap-bin-capsh-shell="/bin/sh"
 CONFIG_PACKAGE_libcomerr=y
 CONFIG_PACKAGE_libdevmapper=y
 CONFIG_PACKAGE_libext2fs=y
+CONFIG_PACKAGE_libgmp=y
 CONFIG_PACKAGE_liblzo=y
 CONFIG_PACKAGE_libmount=y
+CONFIG_PACKAGE_libncurses=y
 CONFIG_PACKAGE_libnetwork=y
 CONFIG_PACKAGE_libparted=y
 CONFIG_PACKAGE_libpopt=y
+CONFIG_PACKAGE_libreadline=y
+CONFIG_PACKAGE_libruby=y
 CONFIG_PACKAGE_libseccomp=y
 CONFIG_PACKAGE_libsmartcols=y
 CONFIG_PACKAGE_libss=y
-CONFIG_PACKAGE_libuv=y
-CONFIG_PACKAGE_libwebsockets-full=y
+CONFIG_PACKAGE_libstdcpp=y
+CONFIG_PACKAGE_libyaml=y
 CONFIG_PACKAGE_luci-app-alist=y
 CONFIG_PACKAGE_luci-app-diskman=y
 CONFIG_PACKAGE_luci-app-dockerman=y
 CONFIG_PACKAGE_luci-app-filebrowser=y
 # CONFIG_PACKAGE_luci-app-filetransfer is not set
 CONFIG_PACKAGE_luci-app-mwan3=y
+CONFIG_PACKAGE_luci-app-openclash=y
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng is not set
 # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui is not set
 CONFIG_PACKAGE_luci-app-samba=y
@@ -92,13 +107,13 @@ CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks=y
 CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_V2ray_Plugin=y
 CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
 CONFIG_PACKAGE_luci-app-syncdial=y
-CONFIG_PACKAGE_luci-app-ttyd=y
 # CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_PDNSD is not set
 # CONFIG_PACKAGE_luci-app-vlmcsd is not set
 # CONFIG_PACKAGE_luci-app-vsftpd is not set
 CONFIG_PACKAGE_luci-app-watchcat=y
 # CONFIG_PACKAGE_luci-app-webd_INCLUDE_WEBD_BINARY is not set
 CONFIG_PACKAGE_luci-app-wolplus=y
+CONFIG_PACKAGE_luci-compat=y
 CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y
@@ -106,7 +121,6 @@ CONFIG_PACKAGE_luci-i18n-mwan3-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-samba-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-smartdns-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-socat-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-watchcat-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-wolplus-zh-cn=y
 CONFIG_PACKAGE_luci-lib-docker=y
@@ -121,15 +135,33 @@ CONFIG_PACKAGE_odhcpd-ipv6only=y
 CONFIG_PACKAGE_odhcpd_ipv6only_ext_cer_id=0
 CONFIG_PACKAGE_parted=y
 # CONFIG_PACKAGE_pdnsd-alt is not set
+CONFIG_PACKAGE_ruby=y
+CONFIG_PACKAGE_ruby-bigdecimal=y
+CONFIG_PACKAGE_ruby-date=y
+CONFIG_PACKAGE_ruby-digest=y
+CONFIG_PACKAGE_ruby-enc=y
+CONFIG_PACKAGE_ruby-forwardable=y
+CONFIG_PACKAGE_ruby-pstore=y
+CONFIG_PACKAGE_ruby-psych=y
+CONFIG_PACKAGE_ruby-stringio=y
+CONFIG_PACKAGE_ruby-strscan=y
+CONFIG_PACKAGE_ruby-yaml=y
 CONFIG_PACKAGE_runc=y
 CONFIG_PACKAGE_samba36-server=y
 CONFIG_PACKAGE_smartdns=y
 CONFIG_PACKAGE_smartmontools=y
 CONFIG_PACKAGE_socat=y
+CONFIG_PACKAGE_terminfo=y
 CONFIG_PACKAGE_tini=y
 CONFIG_PACKAGE_trojan=y
-CONFIG_PACKAGE_ttyd=y
+CONFIG_PACKAGE_unzip=y
+CONFIG_PACKAGE_v2ray-plugin=y
 # CONFIG_PACKAGE_vlmcsd is not set
 # CONFIG_PACKAGE_vsftpd-alt is not set
 CONFIG_PACKAGE_watchcat=y
 CONFIG_PARTED_READLINE=y
+CONFIG_boost-compile-visibility-hidden=y
+CONFIG_boost-runtime-shared=y
+CONFIG_boost-static-and-shared-libs=y
+CONFIG_boost-variant-release=y
+# CONFIG_PACKAGE_kmod-inet-diag is not set
