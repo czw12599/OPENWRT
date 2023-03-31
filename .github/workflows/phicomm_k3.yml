@@ -21,23 +21,8 @@ on:
         default: 'phicomm_k3'
         type: choice
         options:
-          - 'asus_rt-acrh17'
-          - 'newifi-d1'
-          - 'newifi-d2'
-          - 'k2p'
           - 'phicomm_k3'
-          - 'x86_64'
-          - 'r2c'
-          - 'r2s'
-          - 'r4s'
-          - 'r5s'
-          - 'xiaomi_mi-router-4a-gigabit'
-          - 'xiaomi_redmi-router-ac2100'
-          - 'xiaomi_redmi-router-ax6s'
-          - 'xiaomi_mi-router-3g'
-          - 'xiaoyu_xy-c5'
-          - 'ax3600'
-          - 'p2w_r619ac-128m'
+ 
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
         required: true
