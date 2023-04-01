@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede_source/relevance/start'
+      - 'bconfig'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_source]
+        target: [Lede]
 
     steps:    
     - name: 准备结束
@@ -43,7 +43,7 @@ jobs:
     - name: 读取脚本设置
       run: |
         cd ${GITHUB_WORKSPACE}
-        git clone https://github.com/281677160/common-main build/common
+        git clone https://github.com/281677160/common build/common
         mv -f build/common/*.sh build/${{matrix.target}}/
         sudo chmod -R +x build
         if [[ -n "${{ github.event.workflow }}" ]]; then
@@ -59,7 +59,7 @@ jobs:
         if [[ -n "${{ github.event.workflow }}" ]]; then
           export CPU_SELECTIOY="$(source "${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/settings.ini" && echo "${CPU_SELECTION}")"
         else
-          export CPU_PASSWORD="1680328586"
+          export CPU_PASSWORD="1680284610"
           export CPU_OPTIMIZATION="E5"
         fi
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
@@ -94,7 +94,7 @@ jobs:
     - name: 加载diy-part.sh文件
       run: |
         cd openwrt
-        source $BUILD_PATH/$DIY_PART_SH
+        source ${BUILD_PATH}/common.sh && Diy_zdypartsh
         source ${BUILD_PATH}/common.sh && Diy_Publicarea
         
     - name: 加载源、补丁和files文件夹
@@ -133,13 +133,21 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 V=s
+        make -j$(($(nproc) + 1)) || make -j1 V=s
         echo "date=$(date "+%Y%m%d%H%M%S")" >> ${GITHUB_ENV}
+        source ${BUILD_PATH}/common.sh && firmware_jiance
         
     - name: 打包晶晨系列固件
       if: steps.compile.outcome == 'success' && env.PACKAGING_FIRMWARE == 'true'
-      run: |
-        source ${BUILD_PATH}/common.sh && Package_amlogic
+      uses: ncipollo/release-action@main
+      with:
+        name: rootfs.tar.gz
+        tag: targz
+        token: ${{ secrets.REPO_TOKEN }}
+        allowUpdates: true
+        replacesArtifacts: true
+        artifacts: openwrt/targz/*rootfs.tar.gz
+
     - name: 整理固件文件夹(需配合diy-part.sh设定使用)
       continue-on-error: true
       if: steps.compile.outcome == 'success'
@@ -148,7 +156,7 @@ jobs:
         cd openwrt
         source ${BUILD_PATH}/common.sh && Diy_firmware
         
-    - name: 上传固件在 github actions
+    - name: 上传固件在 github Artifacts
       if: steps.compile.outcome == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@v3
       with:
@@ -165,11 +173,11 @@ jobs:
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
     
     - name: 发布固件
-      if: steps.compile.outcome == 'success' && env.UPLOAD_RELEASE == 'true' && env.REPO_TOKEN
+      if: steps.compile.outcome == 'success' && env.UPLOAD_RELEASE == 'true' && env.ING_FIRMWAR == 'true' && env.REPO_TOKEN
       uses: ncipollo/release-action@main
       with:
         name: ${{ env.SOURCE }}-${{ env.PROMPT_TING }}
-        tag: ${{ env.date }}
+        tag: a${{ env.date }}
         token: ${{ secrets.REPO_TOKEN }}
         allowUpdates: true
         body: ${{ env.Tongzhi_Date }}
