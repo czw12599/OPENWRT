@@ -13,7 +13,7 @@
 #
 #
 
-name: 小米-R3G
+name: 小米R3G
 on:
   workflow_dispatch:
     inputs:
@@ -24,16 +24,19 @@ on:
         type: choice
         options:
           - 'master'
+          - 'gl-ax1800'
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
         default: 'x86_64'
         type: choice
         options:
+          - 'aarch64'
           - 'asus_rt-acrh17'
           - 'd-team_newifi-d2'
+          - 'p2w_r619ac-128m'
+          - 'phicomm_k2p'
           - 'xiaomi_R3G'
-          - 'r2s'
           - 'x86_64'
           - 'xiaomi_mi-router-4a-gigabit'
           - 'xiaomi_redmi-router-ac2100'
@@ -69,7 +72,7 @@ on:
         default: 'true'
         type: boolean
       UPLOAD_RELEASE:
-        description: '上传固件到 Github Releases'
+        description: '发布固件到 Github Releases'
         required: false
         default: 'false'
         type: boolean
@@ -79,7 +82,7 @@ on:
         default: 'true'
         type: boolean
       UPDATE_FIRMWARE_ONLINE:
-        description: '增加在线更新固件功能'
+        description: '增加在线更新功能/N1和晶晨系列固件打包'
         required: false
         default: 'true'
         type: boolean
@@ -137,7 +140,7 @@ jobs:
     - name: 读取脚本设置
       run: |
         cd ${GITHUB_WORKSPACE}
-        git clone https://github.com/281677160/common-main build/common
+        git clone https://github.com/281677160/common build/common
         mv -f build/common/*.sh build/${{ env.FOLDER_NAME }}/
         chmod -R +x build
         export SOURCE_CODE="$(source "build/${{ matrix.target }}/settings.ini" && echo ${SOURCE_CODE})"
@@ -192,7 +195,7 @@ jobs:
       if: env.REPO_TOKEN
       run: |
         cd openwrt
-        source $BUILD_PATH/$DIY_PART_SH
+        source ${BUILD_PATH}/common.sh && Diy_zdypartsh
         source ${BUILD_PATH}/common.sh && Diy_Publicarea
         
     - name: 加载源、补丁和files文件夹
