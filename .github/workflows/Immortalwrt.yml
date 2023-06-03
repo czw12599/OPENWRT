@@ -9,35 +9,29 @@
 #
 #
 
-name: Lede-大雕
+name: Immortalwrt-天灵
 on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
-        description: '（大雕源码）请选择源码分支'
+        description: '天灵源码-请选择分支'
         required: true
-        default: 'master'
+        default: 'openwrt-21.02'
         type: choice
         options:
+          - 'openwrt-23.05'
+          - 'openwrt-21.02'
+          - 'openwrt-18.06'
+          - 'openwrt-18.06-k5.4'
           - 'master'
-          - 'gl-ax1800'
       CONFIG_FILE:
-        description: '请选择配置文件'
+        description: '请选择[seed文件夹内]的配置文件'
         required: true
         default: 'x86_64'
         type: choice
         options:
-          - 'aarch64'
-          - 'asus_rt-acrh17'
-          - 'd-team_newifi-d2'
-          - 'p2w_r619ac-128m'
-          - 'phicomm_k2p'
-          - 'x86_32'
           - 'x86_64'
-          - 'xiaomi_mi-router-4a-gigabit'
-          - 'xiaomi_redmi-router-ac2100'
-          - 'xiaomi_redmi-router-ax6s'
-          - 'xiaoyu_xy-c5'
+          - 'aarch64'
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
         required: true
@@ -116,9 +110,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede]
+        target: [Immortalwrt]
         
-        # 请勿对 target: [Lede] 做任何修改
+        # 请勿对 target: [Immortalwrt] 做任何修改
         
     steps:
     - name: 密匙检测（密匙为空则退出）

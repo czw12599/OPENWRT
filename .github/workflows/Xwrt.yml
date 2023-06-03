@@ -9,18 +9,23 @@
 #
 #
 
-name: Lede-大雕
+name: Xwrt-源码
 on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
-        description: '（大雕源码）请选择源码分支'
+        description: '（Xwrt源码）请选择源码分支'
         required: true
         default: 'master'
         type: choice
         options:
           - 'master'
-          - 'gl-ax1800'
+          - '21.10'
+          - '22.03'
+          - 'pr-fix-nand_do_platform_check'
+          - 'master-mt7981'
+          - 'pr-rm-ax6000'
+          - 'pr-wolfssl'
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
@@ -28,16 +33,7 @@ on:
         type: choice
         options:
           - 'aarch64'
-          - 'asus_rt-acrh17'
-          - 'd-team_newifi-d2'
-          - 'p2w_r619ac-128m'
-          - 'phicomm_k2p'
-          - 'x86_32'
           - 'x86_64'
-          - 'xiaomi_mi-router-4a-gigabit'
-          - 'xiaomi_redmi-router-ac2100'
-          - 'xiaomi_redmi-router-ax6s'
-          - 'xiaoyu_xy-c5'
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
         required: true
@@ -116,9 +112,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede]
+        target: [Xwrt]
         
-        # 请勿对 target: [Lede] 做任何修改
+        # 请勿对 target: [Xwrt] 做任何修改
         
     steps:
     - name: 密匙检测（密匙为空则退出）

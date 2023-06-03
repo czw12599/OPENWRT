@@ -1,107 +1,131 @@
 
-- 默认IP地址：192.168.5.3(旁路由模式）
-- 账户：root   密码：空
- 
- 
-- 首先需要打开 Openwrt 主页,点击系统-TTYD 命令窗,或者使用putty和openwrt后台luci插件定时更新 
-- 输入`openwrt`即可进入固件升级菜单                            
-- 输入`tools`即可打开工具箱
-- 输入`qinglong`即可全自动安装青龙 
-- ================================================================
 
-- 自行云编译固件姿势
-- 开始 ctrl+c 
-- 进ssh选择插件 
-``` bash
-cd openwrt && make menuconfig
-```
-- 结束ctrl+d
-
-
-
-- 《[Telegram聊天吹水群](https://t.me/heiheiheio)》- 《[Telegram中文设置方法](https://github.com/danshui-git/shuoming/blob/master/tele.md)》
-
-
-- # 介绍
-
-- 编译amlogic系列，《[自动打包您所需的固件说明]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/Amlogic.md)》
-
-- 源码已直接加入【[常用插件列表](https://github.com/danshui-git/shuoming/blob/master/%E5%90%8D%E7%A7%B0.md)》
-
-- 《[如何在本地Ubuntu一键无脑编译](https://github.com/281677160/bendi)》
- 
-- 《[把定时自动在线更新插件编译进固件的说明]([https://github.com/czw12599-git/shuoming](https://github.com/czw12599/shuoming)/blob/master/%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6.md)》
 
 ---
-#
-- # 编译教程：
-- ### 以下的说明教程都是在我另外的仓库的，查看说明时候就跳转到另外仓库了，浏览器回退就会回来，别拉取到我说明的仓库，注意了！
-#
-- 编译openwrt两个常用的工具下载地址《[PuTTY(SSH)工具](https://github.com/czw12599/shuoming/blob/master/Putty%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD.md)》《[WinSCP文件管理](https://github.com/danshui-git/shuoming/blob/master/WinSCP.md)》
-#
-- > 1、注册及登录github账号，github个别地区或网络已筑墙,请自备梯子《[注册链接](https://github.com)》
-#
-- > 2、拉取我的仓库到你的github帐号《[拉取仓库教程](https://github.com/czw12599/shuoming/blob/master/1%E6%8B%89%E5%8F%96%E4%BB%93%E5%BA%93.md)》
-#
-- > 3、必须了解的脚本简单介绍，起码也知道我仓库有什么源码，出处那里，然后您才好选择《[脚本简单介绍](https://github.com/czw12599/shuoming/blob/master/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E6%96%B0%E8%84%9A%E6%9C%AC.md)》
-#
-- > 4、必须获取密匙然后在你拉取我的仓库里使用，要不然我的仓库您使用不了《[仓库密匙获取跟使用](https://github.com/czw12599/shuoming/blob/master/jm.md)》
-#
-- > 6、修改后台登录IP，在build文件夹-->对应您在第 5 步修改的源码文件夹里点开[diy-part.sh]，然后修改后台登录IP《[修改ip教程](https://github.com/czw12599/shuoming/blob/master/ip.md)》
-#
-- > 7、开启或者关闭某功能，在build文件夹-->对应您在第 5 步修改的源码文件夹里点开[settings.ini]，然后按需控制各项目开关《[各开关控制教程](https://github.com/czw12599-git/shuoming/blob/master/kaiguan.md)》
-#
-- > 8、启动编译《[启动编译程序和SSH连接修改插件机型等教程](https://github.com/danshui-git/shuoming/blob/master/config.md)》
-#
-- > 9、完成编译，下载固件《[固件下载教程](https://github.com/danshui-git/shuoming/blob/master/4%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD.md)》
-#
-- > 10、安装固件，安装固件时出现“Please press Enter to activate this console”就表示安装好了，出现这个就不会跑码的，稍等2-3分钟就可以在浏览器输入IP进入openwrt后台了
-- > 如果会跑码，就耐心等待跑码完成，大概2-3分钟就能跑完的
-#
-- > 11、下次编译，在不改变.config配置文件的情况下，就不需要再次获取了，直接启动编译就可以了，不改变配置的话，手机都可以启动编译
-#
-- > 12、
-- 《[仓库密匙获取跟使用](https://github.com/danshui-git/shuoming/blob/master/jm.md)》
-- 《[Telegram和pushplus的密匙获取方式](https://github.com/danshui-git/shuoming/blob/master/bot.md)》
-- 《[增加编译机型文件夹的方法](https://github.com/danshui-git/shuoming/blob/master/jlck.md)》
-- 《[定时触发开启编译说明](https://github.com/danshui-git/shuoming/blob/master/%E5%AE%9A%E6%97%B6%E7%BC%96%E8%AF%91%E8%AF%B4%E6%98%8E.md)》
-- 《[一键保存配置同步上游仓库说明](https://github.com/danshui-git/shuoming/blob/master/chongxinfork.md)》
-- 《[X86编译时选固件格式和设置overlay空间容量](https://github.com/danshui-git/shuoming/blob/master/overlay.md)》
-- 《[删除固件包中不想要的文件或固件](https://github.com/danshui-git/shuoming/blob/master/%E5%9B%BA%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E6%95%B4%E7%90%86.md)》
-- 《[编译前，修改默认内核编译](https://github.com/danshui-git/shuoming/blob/master/%E4%BF%AE%E6%94%B9%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC.md)》
-- 《[IPV4/IPV6选择，和去除网络共享](https://github.com/danshui-git/shuoming/blob/master/%E5%85%B6%E4%BB%96%E8%AF%B4%E6%98%8E.md)》
-- 《[banner的说明](https://github.com/danshui-git/shuoming/blob/master/banner%E8%AF%B4%E6%98%8E.md)》
-- 《[本地提取.config](https://github.com/danshui-git/shuoming/blob/master/yijianconfig.md)》
-- 《[patch补丁制作](https://github.com/danshui-git/shuoming/blob/master/buding.md)》
-- 《[编译时增加NTFS格式盘挂载](https://github.com/danshui-git/shuoming/blob/master/NTFS%E6%A0%BC%E5%BC%8F%E4%BC%98%E7%9B%98%E6%8C%82%E8%BD%BD)》
-- 《[拉取插件命令和各种命令的简单介绍](https://github.com/danshui-git/shuoming/blob/master/ming.md)》
-- 《[编译出错时查看日志方法](https://github.com/danshui-git/shuoming/blob/master/errors.md)》
-- 《[修改文件跟删除仓库](https://github.com/danshui-git/shuoming/blob/master/%E5%88%A0%E9%99%A4%E5%92%8C%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6.md)》
 
-#
-#
-- ## 鸣谢
-- [coolsnowwolf](https://github.com/coolsnowwolf/lede.git)
-- [Lienol](https://github.com/Lienol/openwrt.git)
-- [ctcgfw](https://github.com/project-openwrt/openwrt.git)
-- [P3TERX](https://github.com/P3TERX/Actions-OpenWrt)
-- [tuanqing](https://github.com/tuanqing/mknop)
-- [Hyy2001X](https://github.com/Hyy2001X/AutoBuild-Actions)
-- [ophub](https://github.com/ophub/amlogic-s9xxx-openwrt)
-- [nicholas-opensource](https://github.com/nicholas-opensource/OpenWrt-Autobuild)
-- [hx210](https://github.com/hx210/build-actions)
-- <a href="#/README.md">hyird</a>
-- <a href="#/README.md">World Peace</a>
-- [github平台](https://github.com/)
-- <a href="#/README.md">感谢各位大佬提供的各种各样的插件</a>
-- <a href="#/README.md">感谢各位帮助过我的人，祝福各位好人一生平安</a>
+<details>
+<summary>🆘各种教程</summary>
+<br>
+<br />
+<br>
 
-#
-- # 捐赠
-- 如果你觉得此项目对你有帮助，请请我喝一杯82年的凉白开，感谢！
+《[github actions编译教程](https://github.com/danshui-git/shuoming#%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B)》
 
--微信-
-# <img src="https://github.com/czw12599-git/shuoming/blob/master/doc/weixin4.png" />
+《[Amlogic、Rockchip系列固件打包设置教程](https://github.com/danshui-git/shuoming/blob/master/Amlogic.md)》
 
+《[在线更新固件插件说明](https://github.com/danshui-git/shuoming/blob/master/%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6.md)》
 
+<br />
+</details>
 
+---
+
+<details>
+<summary>🆙更新说明（2023年6月3号）</summary>
+
+<br>
+
+ 2023年6月3号
+ 
+ 1、每次编译都自动检测一次上游仓库版本，上游有更新的话自动同步上游，同步分小版本和大版本，小版本不会改变您现有机型文件夹，不会改变【diy、files、patches、seed】等文件夹，大版本是直接把上游仓库整个覆盖您现的仓库，不管大小版本更新都会保留备份的，在根目录会多一个【backups】文件夹，里面就是您没更新之前的仓库所有文件，不想要此文件夹的时候直接删除就可以了
+ 
+ 2、运行至【检测文件和对比上游版本】此步骤出错，就展开看看是不是同步了上游仓库，还是您仓库缺少了什么文件而停止了
+ 
+ 3、diy-part.sh有修改，以前的个别控制都有改过，别拿以前的直接覆盖使用，重新设置一次吧
+ 
+ 4、取消了不使用我仓库插件包的选择了，现在必定使用我仓库的插件包，因为我这个仓库是带本地编译的，有这个选择在，要多写很多东西，烦，直接取消
+ 
+ 5、现在github删除文件夹都可以直接删除了，所以我以前的删除文件夹操作也取消了，只保留了建立机型文件夹的操作
+ 
+ 6、我仓库能编译的源码，对方上游增加或者删除分支，您都可以根据上游自己改变分支号的，比如天灵的源码最近增加了【openwrt-23.05】，您仓库没有的，您可以自己添加上就可以了，或者对方上游删除了什么分支，你编译的时候，拉取源码就会出错，你对应的自己删除该分支号就行了，理论是可以支持所有分支，但是也要该分支可以正常编译才可以的，比如说有些分支太久没更新的，基本的依赖都没改过来，肯定不能编译的，还有些源码增加LUCI编译就出错的
+ 
+ 7、修复了，以前在diy-part.sh设置修改我收集的插件包里面的插件名称，修改不了的情况，现在应该随便改了，只要您写的名称准确
+ 
+ 8、那些上传网盘之类的，因为此功能的作者没更新仓库源码，基本都失效了，懒的折腾了，我仓库都删除了那些功能了，有懂搞的可以去上传功能的仓库修改修改来用
+ 
+ ---
+ 
+2023年5月13号
+ 
+ 1、重新整理了所有源码的插件包，因技术有限，gl-ax1800源码增加不了docker，还有个别源码不能编译ssrplus和passwall的NaiveProxy，个别源码的vssr和istore可以编译成功，但是不能用，还有没有其他插件也存在此问题，等你们测试了
+ 
+ 2、gl-ax1800源码的固件不能直接进行转换成Xwrt的固件，安装的时候会出错，然后卡死了，如果你用的是gl-ax1800源码编译的固件要注意，想用Xwrt的固件的固件，就先随便把gl-ax1800源码编译的固件安装成其他任意作者的固件再安装Xwrt的固件
+ 
+ 3、把所有源码的主题插件都整理了一遍，因为有些主题太老了，支持不了好多现在新的插件，那些新插件名称在主题错位的还没啥，反正还能看到，能设置，很多主题直接是不显示该插件的存在，或者好多主题名字不一样，其实都是大同小异的主题，所以我那些主题干掉了。（18.06LUCI的主题比较好用的有 luci-theme-argon，luci-theme-design，luci-theme-opentopd，luci-theme-kucat，19.07之后的主题基本没几个可以选了，感谢这些主题作者的辛苦付出）
+ 
+ 4、不管源码里面有没有luci-theme-argon,我都替换成jerrykuku大佬的luci-theme-argon主题了
+ 
+ 5、自定义设置里面的（export Enable_IPV6_function="0"）、（export Enable_IPV4_function="0"）和（export Create_Ipv6_Lan="0"）只能三选一的开启，如果你都同时开启的话，只会选择启用（export Enable_IPV6_function="1"）
+ 
+ 6、每次安装固件完毕，就是跑完码后，该运行的运行，该咋滴咋滴，全部搞定后就会进行重启，跑完码后，如果你使用页面后台进入固件是可以的，但是进入后因为相隔几十秒后(全部东西运行完毕大概是20-30秒,东西多的话时间要增加一点点)会进行重启，所以有些人进入后，修改了东西，没保存设置，因为才几十秒，很快就过去了，来不及按保存，然后造成你以为你设置了东西，但是过一会发现又没设置的情况，因为你没按保存，固件就重启了，应该要等重启后再来慢慢设置，如果请大家发现这个问题的时候莫慌
+
+---
+
+2023年4月22号
+
+1、把autobuild仓库合拼到了这里了，以前拉autobuild仓库的应该都不可以用了，请重新拉取这个仓库吧，以前老的build-actions仓库也要重新拉取新的build-actions仓库使用（请不要继续拉取autobuild仓库使用，这个是我个人使用仓库）
+ 
+2、编译教程全修改一遍了，看教程还不能启动编译的话，我只能说多看几次吧
+
+3、增加了编译源码的选择，同作者源码的源码分支之间可以自由切换编译（每个作者源码的可支持选择什么分支，在settings.ini文件有写明）
+
+4、晶晨系列固件不限制一个源码，理论上可以编译出rootfs.tar.gz包的，应该都可以打包使用，比较常用的有（天灵的openwrt-21.02分支、大雕的master分支、官方的master分支），固件编译跟打包分2次进行，这样免除了打包空间不足，或者编译+打包时间不足的问题，已经编译出了的rootfs.tar.gz可以使用手动启动打包程序，进行多次打包操作。（更新了amlogic和rockchip固件打包设置教程）
+ 
+5、luci-app-oscam插件，云编译，编译不成功，云编译的时候切莫选择此插件，本地编译倒是可以编译成功。
+ 
+6、大雕源码，有些机型编译增加mac80211驱动的时候会编译错误的，如果出现这个情况，自己带上日志找源码作者处理
+ 
+7、我编译仓库里，增加大雕源码【gl-ax1800】分支选择，不是他 https://github.com/coolsnowwolf/lede 源码的分支，是他另外一个仓库 https://github.com/coolsnowwolf/openwrt-gl-ax1800 的源码，看他意思是专门给gl-ax1800路由器准备的，我看了下，也测试了一下，其实就是一个4.14内核的源码，有需要这个内核的朋友，也可以使用这个分支编译
+
+</details>
+
+---
+
+<details>
+<summary>✴️本地编译</summary>
+<br>
+<br />
+<br>
+
+《[本地Ubuntu一键编译OpenWrt固件](https://github.com/281677160/bendi)》
+
+《[本地一键提取.config然后在云编译脚本使用](https://github.com/281677160/bendi)》
+
+<br />
+</details>
+
+---
+
+<details>
+<summary>🏠Telegram群</summary>
+<br>
+<br />
+ 
+《[Telegram聊天吹水群](https://t.me/heiheiheio)》
+
+《[Telegram中文设置方法](https://github.com/danshui-git/shuoming/blob/master/tele.md)》
+
+</details>
+
+---
+
+ ### 鸣谢！
+ 感谢以下各位大佬（排名无分先后）<br />
+ 
+ [`coolsnowwolf`](https://github.com/coolsnowwolf/lede/tree/master)
+ [`Lienol`](https://github.com/Lienol/openwrt/tree/21.02)
+ [`immortalwrt`](https://github.com/immortalwrt/immortalwrt)
+ [`openwrt`](https://github.com/openwrt/openwrt)
+ [`x-wrt`](https://github.com/x-wrt/x-wrt)
+ [`P3TERX`](https://github.com/P3TERX/Actions-OpenWrt)
+ [`Hyy2001X`](https://github.com/Hyy2001X/AutoBuild-Actions)
+ [`dhxh`](https://github.com/dhxh/Openwrt-Build)
+ [`ophub`](https://github.com/ophub/amlogic-s9xxx-openwrt)
+ [`nicholas-opensource`](https://github.com/nicholas-opensource/OpenWrt-Autobuild)
+ [`hx210`](#/README.md)
+ [`hyird`](#/README.md)
+ [`World Peace`](#/README.md)
+ [`klever1988`](https://github.com/klever1988/cachewrtbuild)
+ [`actions`](https://github.com/actions/upload-artifact)
+ [`svenstaro`](https://github.com/svenstaro/upload-release-action)
+ [`jerrykuku`](https://github.com/jerrykuku/luci-theme-argon)
