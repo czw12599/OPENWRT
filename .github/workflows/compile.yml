@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede/relevance/start'
+      - 'start'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -51,8 +51,14 @@ jobs:
         fi
         source ${GITHUB_WORKSPACE}/build/${{ env.FOLDER_NAME }}/common.sh && Diy_menu1
 
+    - name: 清理因转换CPU而停止的工作流程
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        source build/${FOLDER_NAME}/common.sh && Diy_delruns
+
     - name: CPU检测
       run: |
+        cd ${GITHUB_WORKSPACE}
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
         
     - name: 部署编译环境
@@ -171,7 +177,7 @@ jobs:
       uses: ncipollo/release-action@main
       with:
         name: AutoUpdate
-        tag: ${{ env.TARGET_BOARD }}
+        tag: ${{ env.Update_tag }}
         token: ${{ secrets.REPO_TOKEN }}
         allowUpdates: true
         body: ${{ env.Tongzhi_Date }}
@@ -182,9 +188,9 @@ jobs:
       run: |
         mkdir -p Github_Api
         cd Github_Api
-        curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/${{github.repository}}/releases/tags/${{ env.TARGET_BOARD }} -o zzz_api
+        curl -H "Authorization: Bearer ${{ secrets.REPO_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ env.Update_tag }} -o zzz_api
         if [[ $? -ne 0 ]]; then
-          curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/${{github.repository}}/releases/tags/${TARGET_BOARD} > zzz_api
+          curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/${GIT_REPOSITORY}/releases/tags/${Update_tag} > zzz_api
         fi
         
     - name: 发送[在线更新固件]至云端3
@@ -192,7 +198,7 @@ jobs:
       uses: ncipollo/release-action@main
       with:
         name: AutoUpdate-${{ env.TARGET_BOARD }}
-        tag: ${{ env.TARGET_BOARD }}
+        tag: ${{ env.Update_tag }}
         token: ${{ secrets.REPO_TOKEN }}
         artifacts: "Github_Api/*"
         allowUpdates: true
