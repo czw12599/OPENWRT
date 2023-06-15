@@ -2,7 +2,7 @@
 - 账户：`root`   密码：`空`
  
  ##### 固件更新下载:
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/shidahuilang/openwrt?style=for-the-badge&label=固件更新下载)](https://github.com/shidahuilang/openwrt/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/shidahuilang/openwrt?style=for-the-badge&label=固件更新下载)](https://github.com/czw12599/OPENWRT/releases)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/shidahuilang/ipk?style=for-the-badge&label=插件更新下载)](https://github.com/shidahuilang/ipk/releases)
 - ================================================================
