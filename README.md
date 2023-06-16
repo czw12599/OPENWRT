@@ -1,6 +1,6 @@
 固件管理地址：192.168.5.3（旁路由模式）
 
-在线更新失败请下载升级包（https://github.com/czw12599/OPENWRT/releases/tag/Update-x86） 无需解压直接到固件升级/备份里手动升级可解决
+在线更新失败请下载升级包[（https://github.com/czw12599/OPENWRT/releases/tag/Update-x86）]无需解压直接到固件升级/备份里手动升级可解决
 
 首先需要打开 Openwrt 主页,点击系统-TTYD 命令窗,或者使用putty或者openwrt后台luci插件在线更新
 
