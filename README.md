@@ -1,31 +1,4 @@
-- 默认IP地址：`192.168.5.3`(旁路由模式）
-- 账户：`root`   密码：`空`
- 
- ##### 固件更新下载:
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/shidahuilang/openwrt?style=for-the-badge&label=固件更新下载)](https://github.com/czw12599/OPENWRT/releases)
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/shidahuilang/ipk?style=for-the-badge&label=插件更新下载)](https://github.com/shidahuilang/ipk/releases)
-- ================================================================
-- 首先需要打开 Openwrt 主页,点击系统-TTYD 命令窗,或者使用```putty```或者```openwrt```后台luci插件在线更新 
-- 输入`openwrt`即可进入固件升级菜单                            
-- 输入`tools`即可打开工具箱
-- 输入`qinglong`即可全自动安装青龙 
-- ================================================================
-
-- 自行云编译固件姿势
-- ssh-actions改为ssh就可以启动插件选择
-- 看到ssh链接会有一个web的链接，打开就是命令行，根据下面命令进入
-- 开始 ctrl+c 
-- 进ssh选择插件 
-``` bash
-cd openwrt && make menuconfig
-```
-- 结束ctrl+d
-- REPO_TOKEN密匙制作教程：https://git.io/jm.md
-- 云编译需要 [在此](https://github.com/settings/tokens) 创建个```token```,勾选：```repo```, ```workflow```，保存所得的key
-- 然后在此仓库```Settings```->```Secrets```中添加个名字为```REPO_TOKEN```的Secret,填入token获得的key
-
-- TG通知```Settings```->```Secrets```中添加个名字为```TELEGRAM_BOT_TOKEN```和```TELEGRAM_CHAT_ID```
 
 
 ---
@@ -48,9 +21,39 @@ cd openwrt && make menuconfig
 ---
 
 <details>
-<summary>🆙更新说明（2023年6月11号）</summary>
+<summary>🆙更新说明（2023年6月16号）</summary>
 
 <br>
+ 
+  2023年6月16号
+ 
+ 修复个别源码不能编译N1固件的问题
+ 
+ 有些源码的【armvirt】文件夹已经改成了【armsr】，机型文件也跟着改变的，查看源码文件夹在对应源码分支的[target/linux]里面查看，要么有【armvirt】，要么就是【armsr】
+ 
+ 以前的机型文件一般为：
+ ````
+CONFIG_TARGET_armvirt=y
+CONFIG_TARGET_armvirt_64=y
+CONFIG_TARGET_armvirt_64_Default=y
+ ````
+ 
+ 现在的机型文件有些改为：
+ ````
+CONFIG_TARGET_armvirt=y
+CONFIG_TARGET_armvirt_64=y
+CONFIG_TARGET_armvirt_64_DEVICE_generic=y
+ ````
+ 
+ 如果源码文件为【armsr】的，机型文件一般为：
+ ````
+CONFIG_TARGET_armsr=y
+CONFIG_TARGET_armsr_armv8=y
+CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
+ ````
+ 
+ 以上机型文件仅供参考，自己在对应源码SSH连接多看吧
+ ---
  
  2023年6月11号
  
