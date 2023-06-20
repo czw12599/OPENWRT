@@ -2,6 +2,7 @@
 
 在线编译系统升级导致无法在线更新请下载带UEFI名的升级包https://github.com/czw12599/OPENWRT/releases/tag/Update-x86 无需解压直接到固件升级/备份里手动升级可解决
 
+升级教程：
 首先需要打开 Openwrt 主页,点击系统-TTYD 命令窗,或者使用putty或者openwrt后台luci插件在线更新
 
 输入openwrt即可进入固件升级菜单
