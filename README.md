@@ -1,6 +1,7 @@
 固件管理地址：192.168.5.3（旁路由模式）
 
-## 在线编译系统升级导致无法在线更新请下载带UEFI名的升级包https://github.com/czw12599/OPENWRT/releases/tag/Update-x86 
+## 在线编译系统升级导致无法在线更新请下载带UEFI名的升级包
+https://github.com/czw12599/OPENWRT/releases/tag/Update-x86 
 ## 无需解压直接到固件升级/备份里手动升级可解决
 
 
