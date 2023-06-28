@@ -7,9 +7,11 @@
 
 在线升级教程：
 
-首先需要打开 Openwrt 主页,点击系统-TTYD 命令窗,或者使用putty或者openwrt后台luci插件在线更新
+首先需要打开 Openwrt 主页,点击系统-TTYD 命令窗，输入openwrt即可进入固件升级菜单.
+或者使用putty
+或者openwrt后台luci插件在线更新
 
-输入openwrt即可进入固件升级菜单
+
 
 
 
