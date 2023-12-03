@@ -1,0 +1,148 @@
+
+config smartdns
+	option server_name 'cn'
+	option tcp_server '1'
+	option cache_size '99999'
+	option rr_ttl_min '300'
+	option seconddns_tcp_server '1'
+	option coredump '0'
+	option seconddns_no_speed_check '1'
+	option seconddns_no_dualstack_selection '1'
+	option seconddns_no_cache '1'
+	option ipv6_server '0'
+	option prefetch_domain '1'
+	option serve_expired '1'
+	option seconddns_no_rule_addr '1'
+	option seconddns_no_rule_nameserver '1'
+	option seconddns_no_rule_ipset '1'
+	option seconddns_no_rule_soa '1'
+	option force_aaaa_soa '0'
+	option resolve_local_hostnames '1'
+	option force_https_soa '1'
+	option seconddns_force_aaaa_soa '0'
+	option seconddns_server_group 'us'
+	option port '6053'
+	option seconddns_enabled '1'
+	option seconddns_port '5335'
+	option dualstack_ip_selection '1'
+	option enabled '1'
+	option auto_set_dnsmasq '1'
+	option enable_auto_update '0'
+	option old_port '6053'
+	option old_enabled '1'
+	option old_auto_set_dnsmasq '1'
+
+config server
+	option enabled '1'
+	option name '阿里DNS'
+	option ip '223.5.5.5'
+	option port '53'
+	option type 'udp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '腾讯DNS'
+	option ip '119.29.29.29'
+	option port '53'
+	option type 'udp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '114'
+	option ip '114.114.114.114'
+	option port '53'
+	option type 'udp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '成都DNS'
+	option ip '218.6.200.139'
+	option port '53'
+	option type 'udp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '成都DNS'
+	option ip '61.139.2.69'
+	option port '53'
+	option type 'udp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name 'google'
+	option ip '8.8.8.8'
+	option port '853'
+	option blacklist_ip '0'
+	option type 'tls'
+	option server_group 'us'
+	option no_check_certificate '0'
+
+config server
+	option enabled '1'
+	option name 'google'
+	option ip '8.8.4.4'
+	option port '853'
+	option type 'tls'
+	option blacklist_ip '0'
+	option server_group 'us'
+	option no_check_certificate '0'
+
+config server
+	option enabled '1'
+	option name '阿里DNS'
+	option ip '223.5.5.5'
+	option port '53'
+	option type 'tcp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '腾讯DNS'
+	option ip '119.29.29.29'
+	option port '53'
+	option type 'tcp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '114'
+	option ip '114.114.114.114'
+	option port '53'
+	option type 'tcp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '成都DNS'
+	option ip '218.6.200.139'
+	option port '53'
+	option type 'tcp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name '成都DNS'
+	option ip '61.139.2.69'
+	option port '53'
+	option type 'tcp'
+	option server_group 'cn'
+	option blacklist_ip '0'
+
+config domain-rule
+	option no_speed_check '0'
+	option force_aaaa_soa '0'
+
