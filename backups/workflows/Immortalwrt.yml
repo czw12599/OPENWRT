@@ -1,10 +1,4 @@
 #
-# 请大家记住拉取的是我的 281677160/build-actions 仓库，拉取的是其他仓库有问题，别问我，我也不清楚什么问题
-#
-# 因为SSH连接配置固件直接编译，会给github停止编译的,所以要另外触发启动编译程序
-#
-# 一般情况下都能触发启动编译的，除非没设置好密匙，或者密匙过期了，或者密匙错误之类的
-#
 # REPO_TOKEN密匙制作教程：https://git.io/jm.md
 #
 #
@@ -97,6 +91,8 @@ env:
   PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  WX_TOKEN: ${{ secrets.WX_TOKEN }}
+  CURL: ${{ secrets.CURL }} 
   TZ: Asia/Shanghai
 
 jobs:
@@ -130,7 +126,7 @@ jobs:
     - name: 检测文件和对比上游版本
       run: |
         cd ${GITHUB_WORKSPACE}
-        bash <(curl -fsSL https://raw.githubusercontent.com/281677160/common/main/custom/first.sh)
+        bash <(curl -fsSL https://raw.githubusercontent.com/shidahuilang/common/main/custom/first.sh)
         source ${GITHUB_WORKSPACE}/build/${{ env.FOLDER_NAME }}/settings.ini
         export INPUTS_REPO_BRANCH="${{ github.event.inputs.REPO_BRANCH }}"
         export INPUTS_CONFIG_FILE="${{ github.event.inputs.CONFIG_FILE }}"
@@ -253,5 +249,13 @@ jobs:
         if [[ "${{ env.INFORMATION_NOTICE }}" == "PUSH" ]]; then
           if [[ "${{steps.gitpush.outcome}}" == 'success' ]]; then
             curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="开始编译【${{matrix.target}}】" --data "content=🎉 主人💕：您的编译脚本成功触发【${{matrix.target}}】文件夹编译【${REPO_BRANCH}分支的${{env.TARGET_PROFILE}}】固件中,请耐心等待...... 😋(${{env.WAREHOUSE_MAN}}仓库的#${{env.RUN_NUMBER}}号)！($(date +%Y年%m月%d号%H时%M分))💐" "http://www.pushplus.plus/send"
+          fi
+        fi
+        if [[ "${{ env.INFORMATION_NOTICE }}" == "WX" ]]; then
+          if [[ "${{steps.gitpush.outcome}}" == 'success' ]] && [[ "${{steps.compile.outcome}}" == 'success' ]]; then
+            curl -k --data token="${{ secrets.WX_TOKEN }}" --data title="开始编译【${{ env.FOLDER_NAME }}】" --data "message=🎉 主人💕：您的编译脚本成功触发【${{ env.FOLDER_NAME }}】文件夹编译【${{env.TARGET_PROFILE}}】固件中,请耐心等待...... 😋(${{env.Tongzhi_Date}})" "http://${{ secrets.CURL }}/push?token=${{ secrets.WX_TOKEN }}&"
+          else
+            curl -k --data token="${{ secrets.WX_TOKEN }}" --data title="触发启动失败" --data "message=💥主人❌ ：上游扩展错误或者脚本错误,触发启动【${{ env.FOLDER_NAME }}】失败,请点击触发脚本步骤查看详情!(${{env.Tongzhi_Date}})" "http://${{ secrets.CURL }}/push?token=${{ secrets.WX_TOKEN }}&"
+            exit 1
           fi
         fi
