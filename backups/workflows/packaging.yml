@@ -69,7 +69,7 @@ on:
     branches:
       - main
     paths:
-      - 'bconfig'
+      - 'build/Lede/relevance/armsrstart'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -92,7 +92,7 @@ jobs:
     - name: 读取脚本设置
       run: |
         cd ${GITHUB_WORKSPACE}
-        git clone https://github.com/281677160/common build/common
+        git clone https://github.com/shidahuilang/common build/common
         chmod -R +x build
         if [[ -n "${{ github.event.inputs.amlogic_model }}" ]]; then
           echo "SOURCE=${{ inputs.source_branch }}" >> ${GITHUB_ENV}

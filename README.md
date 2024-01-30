@@ -1,44 +1,3 @@
-固件管理地址：192.168.5.3（旁路由模式）
-
-### `在线编译系统升级导致无法在线更新请下载最新的带UEFI名升级包：`
-### [点此下载](https://github.com/czw12599/OPENWRT/releases/tag/Update-x86)
-### `无需解压直接到固件升级/备份里手动升级可解决`
-
-
-在线升级教程：
-
-首先需要打开 Openwrt 主页,点击系统-TTYD 命令窗，输入openwrt即可进入固件升级菜单.
-
-或者使用putty
-
-或者openwrt后台luci插件在线更新
-
-
-
-
-
-================================================================
-
-自行云编译固件姿势
-
-勾选SSH就可以启动插件选择
-
-看到ssh链接会有一个web的链接，打开就是命令行，根据下面命令进入
-
-开始 ctrl+c
-
-进ssh选择插件
-
-cd openwrt && make menuconfig
-结束ctrl+d
-
-REPO_TOKEN密匙制作教程：https://git.io/jm.md
-
-云编译需要 [在此](https://github.com/settings/tokens)  创建个token,勾选：repo, workflow，保存所得的key
-
-然后在此仓库Settings->Secrets中添加个名字为REPO_TOKEN的Secret,填入token获得的key
-
-TG通知Settings->Secrets中添加个名字为TELEGRAM_BOT_TOKEN和TELEGRAM_CHAT_ID
 
 
 
@@ -62,9 +21,20 @@ TG通知Settings->Secrets中添加个名字为TELEGRAM_BOT_TOKEN和TELEGRAM_CHAT
 ---
 
 <details>
-<summary>🆙更新说明（2023年6月16号）</summary>
+<summary>🆙更新说明（2024年1月14号）</summary>
 
 <br>
+
+  2024年1月14号
+
+ 修复私库不能启动编译和同步更新上游仓库问题，要注意的是如果你把仓库设置成私库，在线更新固件功能是不可以使用的，因为私库是检测不到的，就没办法下载您在私库releases的固件
+ 
+ ---
+  2023年9月2号
+
+ 增加<释放Ubuntu磁盘空间>解决最近因为服务器空间不足而编译失败的问题
+ 
+ ---
  
   2023年6月16号
  
@@ -179,19 +149,6 @@ CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
 
 ---
 
-<details>
-<summary>🏠Telegram群</summary>
-<br>
-<br />
- 
-《[Telegram聊天吹水群](https://t.me/heiheiheio)》
-
-《[Telegram中文设置方法](https://github.com/danshui-git/shuoming/blob/master/tele.md)》
-
-</details>
-
----
-
  ### 鸣谢！
  感谢以下各位大佬（排名无分先后）<br />
  
@@ -212,6 +169,3 @@ CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
  [`actions`](https://github.com/actions/upload-artifact)
  [`svenstaro`](https://github.com/svenstaro/upload-release-action)
  [`jerrykuku`](https://github.com/jerrykuku/luci-theme-argon)
-
-
-
