@@ -6,7 +6,7 @@
 
 
 # 后台IP设置
-export Ipv4_ipaddr="192.168.5.3"            # 修改openwrt后台地址(填0为关闭)
+export Ipv4_ipaddr="192.168.110.3"            # 修改openwrt后台地址(填0为关闭)
 export Netmask_netm="255.255.255.0"         # IPv4 子网掩码（默认：255.255.255.0）(填0为不作修改)
 export Op_name="OpenWrt"                # 修改主机名称为OpenWrt-123(填0为不作修改)
 
@@ -19,7 +19,7 @@ export Mandatory_theme="design"              # 将bootstrap替换您需要的主
 export Default_theme="design"                # 多主题时,选择某主题为默认第一主题 (填写主题名称,填0为不作修改)
 
 # 旁路由选项
-export Gateway_Settings="192.168.5.1"                 # 旁路由设置 IPv4 网关(填入您的网关IP为启用)(填0为不作修改)
+export Gateway_Settings="192.168.110.1"                 # 旁路由设置 IPv4 网关(填入您的网关IP为启用)(填0为不作修改)
 export DNS_Settings="0"                     # 旁路由设置 DNS(填入DNS，多个DNS要用空格分开)(填0为不作修改)
 export Broadcast_Ipv4="0"                   # 设置 IPv4 广播(填入您的IP为启用)(填0为不作修改)
 export Disable_DHCP="0"                     # 旁路由关闭DHCP功能(1为启用命令,填0为不作修改)
