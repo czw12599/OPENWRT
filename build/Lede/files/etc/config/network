@@ -1,0 +1,40 @@
+
+config interface 'loopback'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+	option device 'lo'
+
+config globals 'globals'
+	option ula_prefix 'fdee:4232:dd2f::/48'
+	option packet_steering '1'
+
+config interface 'lan'
+	option proto 'static'
+	option ipaddr '192.168.110.3'
+	option netmask '255.255.255.0'
+	option gateway '192.168.110.1'
+	option delegate '0'
+	option _orig_ifname 'eth0'
+	option _orig_bridge 'true'
+	option device 'br-lan'
+	list dns '192.168.110.1'
+	option ip6weight '0'
+
+config interface 'IPTV'
+	option proto 'dhcp'
+	option delegate '0'
+	option hostname 'mt279k0163t03287'
+	option metric '200'
+	option vendorid 'SCITV'
+	option macaddr '74:97:81:03:8d:b8'
+	option device 'eth1'
+	option clientid '749781038db8'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth0'
+	list ports 'eth2'
+	list ports 'eth3'
+
