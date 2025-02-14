@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede/relevance/start'
+      - 'build/Immortalwrt/relevance/start'
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede]
+        target: [Immortalwrt]
 
     steps:    
     - name: 准备结束
@@ -50,7 +50,18 @@ jobs:
           source ${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/relevance/settings.ini
         fi
         source ${GITHUB_WORKSPACE}/build/${{ env.FOLDER_NAME }}/common.sh && Diy_menu1
-        - name: 释放Ubuntu磁盘空间
+
+    - name: 清理因转换CPU而停止的工作流程
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        source build/${FOLDER_NAME}/common.sh && Diy_delruns
+
+    - name: CPU检测
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        source build/${FOLDER_NAME}/common.sh && CPU_Priority
+
+    - name: 释放Ubuntu磁盘空间
       uses: endersonmenezes/free-disk-space@v2
       with:
         remove_android: true
@@ -62,15 +73,6 @@ jobs:
         remove_packages_one_command: true
         remove_folders: "/usr/share/swift /usr/share/miniconda /usr/share/az* /usr/share/glade* /usr/local/lib/node_modules /usr/local/share/chromium /usr/local/share/powershell"
         testing: false
-          - name: 清理因转换CPU而停止的工作流程
-      run: |
-        cd ${GITHUB_WORKSPACE}
-        source build/${FOLDER_NAME}/common.sh && Diy_delruns
-
-    - name: CPU检测
-      run: |
-        cd ${GITHUB_WORKSPACE}
-        source build/${FOLDER_NAME}/common.sh && CPU_Priority
         
     - name: 部署编译环境
       env:
