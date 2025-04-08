@@ -19,6 +19,10 @@ on:
         default: 'master'
         type: choice
         options:
+          - 'openwrt-23.05'
+          - 'openwrt-21.02'
+          - 'openwrt-18.06'
+          - 'openwrt-18.06-k5.4'
           - 'master'
       CONFIG_FILE:
         description: '请选择配置文件'
@@ -43,7 +47,7 @@ on:
         default: '默认'
         type: choice
         options:
-          - '默认'
+          - '7763'
           - '8370C'
           - '8272CL'
           - '8171M'
@@ -130,7 +134,7 @@ jobs:
         fi
     
     - name: 准备结束
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: 检测文件和对比上游版本
       run: |

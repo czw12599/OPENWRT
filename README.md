@@ -21,15 +21,48 @@
 ---
 
 <details>
-<summary>🆙更新说明（2024年1月14号）</summary>
+<summary>🆙更新说明（2025年3月30号）</summary>
 
 <br>
+
+  2025年3月30号
+
+ 1、去除选择服务器CPU编译的操作，测试了一下，现在可以看到的CPU基本都全是AMD的一个型号了，如果使用了选择服务器CPU编译的话，会一直循环寻找CPU当中，不会进行编译了
+
+
+ ---
+
+  2025年3月26号
+
+ 1、将《[padavanonly](https://github.com/padavanonly/immortalwrt-mt798x-24.10)》和《[hanwckf](https://github.com/hanwckf/immortalwrt-mt798x)》的仓库整合成Mt798x的了
+ 
+ 2、选择hanwckf-21.02分支编译是[hanwckf](https://github.com/hanwckf/immortalwrt-mt798x)作者仓库的openwrt-21.02分支，选择其他分支编译的是[padavanonly](https://github.com/padavanonly/immortalwrt-mt798x-24.10)作者的仓库，均为mtk闭源网卡驱动
+ 
+ 3、openwrt-23.05和hanwckf-21.02的【mt7981和mt7986】可以编译机型文件均拉取于[padavanonly](https://github.com/padavanonly/immortalwrt-mt798x-24.10)作者仓库的2410分支，也就是说【mt7981和mt7986】类的机型都同时同步与[padavanonly](https://github.com/padavanonly/immortalwrt-mt798x-24.10)作者的2410分支.
+
+ ---
+  2025年3月25号
+
+ 1、修复个别源码开启 export Enable_IPV6_function="1" 选项编译错误，个别源码编译选择ipv6会缺依赖造成编译错误
+ 
+ 2、修复个别源码开启 export Enable_IPV4_function="1"  选项编译错误，个别源码是不能完整清除IPV6来编译的，会造成编译错误
+ 
+ 3、修复低版本源码编译出现 WARNING: Makefile 'package/feeds/danshui/v2raya/Makefile' has a dependency on 'kmod-nft-tproxy', which does not exist 错误
+
+ ---
+
+  2025年3月21号
+
+ 修复脚本长期没更新导致的各种问题，增加 https://github.com/padavanonly/immortalwrt-mt798x-24.10 此仓库源码
+
+ ---
 
   2024年1月14号
 
  修复私库不能启动编译和同步更新上游仓库问题，要注意的是如果你把仓库设置成私库，在线更新固件功能是不可以使用的，因为私库是检测不到的，就没办法下载您在私库releases的固件
  
  ---
+ 
   2023年9月2号
 
  增加<释放Ubuntu磁盘空间>解决最近因为服务器空间不足而编译失败的问题
