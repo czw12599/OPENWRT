@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/Lede/relevance/start'
+      - 'build/Official/relevance/start'
 
 env:
   GIT_REPOSITORY: ${{github.repository}}
@@ -30,14 +30,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-                            target: [Lede]
+              target: [Official]
 
     steps:    
     - name: 准备结束
       uses: actions/checkout@v4
 
     - name: 密匙检测（密匙为空则退出）
-      uses: 281677160/common@mishi2
+      uses: 281677160/common@mishi
 
     - name: 释放Ubuntu磁盘空间
       uses: endersonmenezes/free-disk-space@v2
@@ -115,7 +115,6 @@ jobs:
         source $COMMON_SH && Diy_firmware
 
     - name: 发送[在线更新固件]至云端
-      continue-on-error: true
       if: steps.compile.outcome == 'success' && env.UPDATE_FIRMWARE_ONLINE == 'true'
       uses: 281677160/common@cloud
         
