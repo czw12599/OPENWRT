@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-          target: [Immortalwrt]
+            target: [Immortalwrt]
 
     steps:    
     - name: 准备结束
