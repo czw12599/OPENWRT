@@ -21,8 +21,22 @@
 ---
 
 <details>
-<summary>🆙更新说明（2025年5月11号）</summary>
+<summary>🆙更新说明（2025年5月24号）</summary>
 <br>
+
+  2025年5月24号
+
+ 1、修复[释放Ubuntu磁盘空间]运行时候有报错的问题，以前用的是 https://github.com/endersonmenezes/free-disk-space 这个作者的源码，我拉取过来修复了一点点东西，修复过后比以前多2~3G空间吧
+
+
+ ---
+
+  2025年5月19号
+
+ 1、修复了一些小问题，增加删除缓存功能，如果编译的时候出现奇怪的错误，一般都是【ERROR: target/linux failed to build.】这样的，或者就是缓存弄的，把缓存的[√]去掉，再编译，就会先清理缓存，在编译的时候再次缓存，如果你一直去掉[√]编译，就等于一直不使用缓存
+
+
+ ---
 
   2025年5月11号
 
@@ -212,12 +226,12 @@ CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
  [`openwrt`](https://github.com/openwrt/openwrt)
  [`x-wrt`](https://github.com/x-wrt/x-wrt)
  [`P3TERX`](https://github.com/P3TERX/Actions-OpenWrt)
- [`Hyy2001X`](https://github.com/Hyy2001X/AutoBuild-Actions)
+ [`Hyy2001X`](https://github.com/Hyy2001X/AutoBuild-Actions-Template)
  [`dhxh`](https://github.com/dhxh/Openwrt-Build)
  [`ophub`](https://github.com/ophub/amlogic-s9xxx-openwrt)
  [`nicholas-opensource`](https://github.com/nicholas-opensource/OpenWrt-Autobuild)
- [`hx210`](#/README.md)
- [`hyird`](#/README.md)
+ [`hx210`](https://github.com/hx210/Actions-OpenWrt)
+ [`hyird`](https://github.com/hyird/EasyTier)
  [`World Peace`](#/README.md)
  [`klever1988`](https://github.com/klever1988/cachewrtbuild)
  [`actions`](https://github.com/actions/upload-artifact)

@@ -26,16 +26,15 @@ on:
         default: 'x86_64'
         type: choice
         options:
-          - 'aarch64'
-          - 'asus_rt-acrh17'
+          - 'armsr_rootfs_tar_gz'
+          - 'asus_rt-ac42u'
           - 'd-team_newifi-d2'
           - 'p2w_r619ac-128m'
-          - 'R2S'
+          - 'phicomm_n1'
+          - 'phicomm_k2p'
+          - 'phicomm_k3'
           - 'x86_32'
           - 'x86_64'
-          - 'xiaomi_mi-router-4a-gigabit'
-          - 'xiaomi_redmi-router-ac2100'
-          - 'xiaomi_redmi-router-ax6s'
           - 'xiaoyu_xy-c5'
       INFORMATION_NOTICE:
         description: 'Telegram或pushplus信息通知'
@@ -112,7 +111,7 @@ jobs:
     - name: 准备结束
       uses: actions/checkout@v4
       
-    - name: 密匙检测（密匙为空则退出）
+    - name: 检测密匙/文件/版本
       uses: 281677160/common@mishi
 
     - name: 部署编译环境
@@ -120,7 +119,8 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo -E apt-get -qq update -y
-        sudo -E apt-get -qq install -y gawk git gettext libssl-dev xsltproc zip git-core wget curl grep python2.7 python3 python3-pip libpython3-dev
+        sudo -E apt-get -qq install -y gawk git gettext libssl-dev xsltproc zip git-core wget curl grep python2.7 python3 python3-pip libpython3-dev snapd
+        sudo snap install jq
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /${{ env.DIY_WORK }}
         sudo chown $USER:$GROUPS /${{ env.DIY_WORK }}
@@ -130,6 +130,7 @@ jobs:
       run: |
         git clone -q -b "${REPO_BRANCH}" --single-branch "${REPO_URL}" openwrt
         ln -sf /${{ env.DIY_WORK }}/openwrt ${GITHUB_WORKSPACE}/openwrt
+        bash ${{ env.COMMON_SH }} Diy_feedsconf
         echo "SHANG_CHUAN=true" >> ${GITHUB_ENV}
     
     - name: 公告

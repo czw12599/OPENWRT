@@ -21,10 +21,33 @@
 ---
 
 <details>
-<summary>🆙更新说明（2025年3月30号）</summary>
-
+<summary>🆙更新说明（2025年5月11号）</summary>
 <br>
 
+  2025年5月11号
+
+ 1、Lienol源码那里删除了几个低版本的luci分支，我在脚本当中也删除了对官方的低版本luci编译，还有删除了天灵的低版本luci的，实在是passwall和ssr-plus更新太快了，4月24号成修复不能编译NaiveProxy问题，现在又不能编译了，如果你们不需要编译这些，你们可以自己加回去编译的
+
+
+ ---
+
+
+  2025年4月24号
+
+ 1、修复了23.05以下不能编译的NaiveProxy问题
+
+
+ ---
+  2025年4月23号
+
+ 1、把脚本重新整理了一遍，23.05或者以下的版本编译passwall和ssr-plus都强制使用shadowsocks-libev编译了，使用Shadowsocks_Rust因为passwall更新太快，源码跟不上会导致编译失败，23.05以下版本强制去掉NaiveProxy
+ 
+ 2、diy-part.sh文件内容有小修改，别直接复制
+ 
+ 3、不想用这个仓库编译的话，可以使用 https://github.com/281677160/actions-openwrt 此仓库，原汁原味，啥都没修改过的
+
+
+ ---
   2025年3月30号
 
  1、去除选择服务器CPU编译的操作，测试了一下，现在可以看到的CPU基本都全是AMD的一个型号了，如果使用了选择服务器CPU编译的话，会一直循环寻找CPU当中，不会进行编译了
@@ -175,8 +198,6 @@ CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
 
 《[本地Ubuntu一键编译OpenWrt固件](https://github.com/281677160/bendi)》
 
-《[本地一键提取.config然后在云编译脚本使用](https://github.com/281677160/bendi)》
-
 <br />
 </details>
 
@@ -185,8 +206,8 @@ CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
  ### 鸣谢！
  感谢以下各位大佬（排名无分先后）<br />
  
- [`coolsnowwolf`](https://github.com/coolsnowwolf/lede/tree/master)
- [`Lienol`](https://github.com/Lienol/openwrt/tree/21.02)
+ [`coolsnowwolf`](https://github.com/coolsnowwolf/lede)
+ [`Lienol`](https://github.com/Lienol/openwrt)
  [`immortalwrt`](https://github.com/immortalwrt/immortalwrt)
  [`openwrt`](https://github.com/openwrt/openwrt)
  [`x-wrt`](https://github.com/x-wrt/x-wrt)
